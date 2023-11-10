@@ -1,9 +1,5 @@
 package christmas.domain;
 
-import java.time.LocalDate;
-import java.time.Month;
-import java.time.Year;
-
 public class OrderDate {
     private static final Integer YEAR = 2023;
     private static final Integer MONTH = 12;
@@ -13,7 +9,7 @@ public class OrderDate {
 
     private final Integer dayOfMonth;
 
-    public OrderDate(Integer dayOfMonth) {
+    private OrderDate(Integer dayOfMonth) {
         validate(dayOfMonth);
         this.dayOfMonth = dayOfMonth;
     }
