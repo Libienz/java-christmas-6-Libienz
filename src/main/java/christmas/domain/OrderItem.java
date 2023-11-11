@@ -18,6 +18,10 @@ public class OrderItem {
         return new OrderItem(menuItem, orderCount);
     }
 
+    public String getMenuName() {
+        return menuItem.getItemName();
+    }
+
     private void validate(MenuItem menuItem, Integer orderCount) {
         validateOrderCount(orderCount);
     }
