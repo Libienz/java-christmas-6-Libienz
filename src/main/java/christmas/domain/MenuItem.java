@@ -1,5 +1,7 @@
 package christmas.domain;
 
+import java.util.Arrays;
+
 public enum MenuItem {
     // 애피타이저
     MUSHROOM_SOUP("양송이수프", 6_000, MenuCategory.APPETIZER),
@@ -21,6 +23,8 @@ public enum MenuItem {
     RED_WINE("레드와인", 60_000, MenuCategory.BEVERAGE),
     CHAMPAGNE("샴페인", 25_000, MenuCategory.BEVERAGE);
 
+    private static final String INVALID_ORDER = "[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.";
+
     private final String itemName;
     private final int price;
     private final MenuCategory category;
@@ -29,6 +33,13 @@ public enum MenuItem {
         this.itemName = itemName;
         this.price = price;
         this.category = category;
+    }
+
+    public static MenuItem from(String itemName) {
+        return Arrays.stream(MenuItem.values())
+                .filter(item -> item.itemName.equals(itemName))
+                .findAny()
+                .orElseThrow(() -> new IllegalArgumentException(INVALID_ORDER));
     }
 
     public String getItemName() {
