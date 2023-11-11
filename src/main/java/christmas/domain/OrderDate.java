@@ -18,6 +18,10 @@ public class OrderDate {
         return new OrderDate(dayOfMonth);
     }
 
+    public Boolean isInPeriod(int startDay, int endDay) {
+        return startDay < dayOfMonth && endDay > dayOfMonth;
+    }
+
     private void validate(Integer dayOfMonth) {
         validateRange(dayOfMonth);
     }
