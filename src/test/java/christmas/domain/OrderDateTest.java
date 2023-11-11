@@ -1,9 +1,11 @@
 package christmas.domain;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatNoException;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -24,4 +26,19 @@ class OrderDateTest {
     void testValidRangeOrderDate(int dayOfDecember) {
         assertThatNoException().isThrownBy(() -> OrderDate.from(dayOfDecember));
     }
+
+    @DisplayName("기간이 주어졌을 때 객체가 그 기간에 포함되는지 판단할 수 있다")
+    @Test
+    void testIsInPeriod() {
+        OrderDate orderDate = OrderDate.from(5);
+        assertThat(orderDate.isInPeriod(1, 31)).isTrue();
+    }
+
+    @DisplayName("기간이 주어졌을 때 객체가 그 기간에 포함되는지 판단할 수 있다")
+    @Test
+    void testIsNotInPeriod() {
+        OrderDate orderDate = OrderDate.from(5);
+        assertThat(orderDate.isInPeriod(1, 4)).isFalse();
+    }
+
 }
