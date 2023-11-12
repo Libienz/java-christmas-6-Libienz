@@ -1,5 +1,6 @@
 package christmas.domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatNoException;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -29,5 +30,16 @@ class OrderItemsTest {
         List<OrderItem> orderItems = List.of(orderItem1, orderItem2);
 
         assertThatNoException().isThrownBy(() -> OrderItems.from(orderItems));
+    }
+
+    @DisplayName("특정 카테고리의 상품이 몇개인지 계산할 수 있다")
+    @Test
+    void countCategoryItems() {
+        OrderItem orderItem1 = OrderItem.of(MenuItem.T_BONE_STEAK, 3);
+        OrderItem orderItem2 = OrderItem.of(MenuItem.SEAFOOD_PASTA, 3);
+        OrderItem orderItem3 = OrderItem.of(MenuItem.CHOCOLATE_CAKE, 3);
+        List<OrderItem> orderItems = List.of(orderItem1, orderItem2);
+
+        assertThat(OrderItems.from(orderItems).countCategoryItem(MenuCategory.MAIN)).isEqualTo(6);
     }
 }
