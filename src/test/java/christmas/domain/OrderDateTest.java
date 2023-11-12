@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatNoException;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.time.DayOfWeek;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -46,5 +47,12 @@ class OrderDateTest {
     void testCalculateOffset() {
         OrderDate orderDate = OrderDate.from(5);
         assertThat(orderDate.calculateDayOffset(1)).isEqualTo(4);
+    }
+
+    @DisplayName("무슨 요일인지 알아낼 수 있다")
+    @Test
+    void testGetDayOfWeek() {
+        OrderDate orderDate = OrderDate.from(26);
+        assertThat(orderDate.calculateDayOfWeek()).isEqualTo(DayOfWeek.TUESDAY);
     }
 }
