@@ -25,8 +25,9 @@ public class OrderDate {
         return startDay <= dayOfMonth && endDay >= dayOfMonth;
     }
 
-    public DayOfWeek calculateDayOfWeek() {
-        return LocalDate.of(YEAR, MONTH, dayOfMonth).getDayOfWeek();
+    public boolean isWeekend() {
+        DayOfWeek dayOfWeek = LocalDate.of(YEAR, MONTH, dayOfMonth).getDayOfWeek();
+        return dayOfWeek == DayOfWeek.FRIDAY || dayOfWeek == DayOfWeek.SATURDAY;
     }
 
     public Integer calculateDayOffset(int day) {

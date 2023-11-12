@@ -3,7 +3,6 @@ package christmas.service;
 import christmas.domain.MenuCategory;
 import christmas.domain.Order;
 import christmas.dto.DiscountResultDto;
-import java.time.DayOfWeek;
 
 public class WeekDayDiscountPolicy implements DiscountPolicy {
     private static final Integer EVENT_START_DAY = 1;
@@ -14,13 +13,7 @@ public class WeekDayDiscountPolicy implements DiscountPolicy {
 
     @Override
     public Boolean supports(Order order) {
-        if (!order.isOrderDateInPeriod(EVENT_START_DAY, EVENT_END_DAY)) {
-            return false;
-        }
-        if (!isWeeekDayOrder(order)) {
-            return false;
-        }
-        return true;
+        return !order.isOrderDateWeekend();
     }
 
     @Override
@@ -30,13 +23,5 @@ public class WeekDayDiscountPolicy implements DiscountPolicy {
 
     private int calculateDiscountAmount(Order order) {
         return order.countCategoryItem(DISCOUNT_MENU_CATEGORY) * DISCOUNT_AMOUNT_PER_ITEM;
-    }
-
-    private boolean isWeeekDayOrder(Order order) {
-        DayOfWeek dayOfWeek = order.calculateOrderDateDayOfWeek();
-        if (dayOfWeek == DayOfWeek.FRIDAY || dayOfWeek == DayOfWeek.SATURDAY) {
-            return false;
-        }
-        return true;
     }
 }

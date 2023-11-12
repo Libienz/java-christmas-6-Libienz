@@ -1,7 +1,5 @@
 package christmas.domain;
 
-import java.time.DayOfWeek;
-
 public class Order {
     private final OrderItems orderItems;
     private final OrderDate orderDate;
@@ -27,8 +25,8 @@ public class Order {
         return orderItems.countCategoryItem(menuCategory);
     }
 
-    public DayOfWeek calculateOrderDateDayOfWeek() {
-        return orderDate.calculateDayOfWeek();
+    public boolean isOrderDateWeekend() {
+        return orderDate.isWeekend();
     }
 
     public boolean isOrderDateSame(int dayOfMonth) {
