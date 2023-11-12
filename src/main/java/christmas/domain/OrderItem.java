@@ -18,6 +18,13 @@ public class OrderItem {
         return new OrderItem(menuItem, orderCount);
     }
 
+    public int countCategoryItem(MenuCategory menuCategory) {
+        if (menuItem.getCategory() == menuCategory) {
+            return orderCount;
+        }
+        return 0;
+    }
+
     public String getMenuName() {
         return menuItem.getItemName();
     }

@@ -15,6 +15,12 @@ public class OrderItems {
         return new OrderItems(orderItems);
     }
 
+    public Integer countCategoryItem(MenuCategory menuCategory) {
+        return orderItems.stream()
+                .map(orderItem -> orderItem.countCategoryItem(menuCategory))
+                .reduce(0, Integer::sum);
+    }
+
     private void validate(List<OrderItem> orderItems) {
         validateDuplicateOrderItem(orderItems);
     }

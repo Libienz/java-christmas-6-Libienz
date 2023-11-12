@@ -23,6 +23,10 @@ public class Order {
         return orderDate.calculateDayOffset(day);
     }
 
+    public int countCategoryItem(MenuCategory menuCategory) {
+        return orderItems.countCategoryItem(menuCategory);
+    }
+
     public DayOfWeek calculateOrderDateDayOfWeek() {
         return orderDate.calculateDayOfWeek();
     }
