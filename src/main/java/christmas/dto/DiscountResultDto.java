@@ -1,8 +1,8 @@
 package christmas.dto;
 
 public class DiscountResultDto {
-    private String discountDescription;
-    private Integer discountAmount;
+    private final String discountDescription;
+    private final Integer discountAmount;
 
     private DiscountResultDto(String discountDescription, Integer discountAmount) {
         this.discountDescription = discountDescription;
