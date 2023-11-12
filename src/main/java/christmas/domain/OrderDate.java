@@ -1,5 +1,8 @@
 package christmas.domain;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+
 public class OrderDate {
     private static final Integer YEAR = 2023;
     private static final Integer MONTH = 12;
@@ -20,6 +23,10 @@ public class OrderDate {
 
     public Boolean isInPeriod(int startDay, int endDay) {
         return startDay <= dayOfMonth && endDay >= dayOfMonth;
+    }
+
+    public DayOfWeek calculateDayOfWeek() {
+        return LocalDate.of(YEAR, MONTH, dayOfMonth).getDayOfWeek();
     }
 
     public Integer calculateDayOffset(int day) {

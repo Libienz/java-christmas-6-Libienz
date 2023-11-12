@@ -1,5 +1,7 @@
 package christmas.domain;
 
+import java.time.DayOfWeek;
+
 public class Order {
     private final OrderItems orderItems;
     private final OrderDate orderDate;
@@ -19,5 +21,9 @@ public class Order {
 
     public int calculateOrderDateOffset(int day) {
         return orderDate.calculateDayOffset(day);
+    }
+
+    public DayOfWeek calculateOrderDateDayOfWeek() {
+        return orderDate.calculateDayOfWeek();
     }
 }
