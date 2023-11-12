@@ -5,7 +5,7 @@ import christmas.dto.DiscountResultDto;
 
 public class ChristmasDiscountPolicy implements DiscountPolicy {
     private static final Integer EVENT_START_DAY = 1;
-    private static final Integer EVENT_END_DAY = 26;
+    private static final Integer EVENT_END_DAY = 25;
     private static final String DISCOUNT_DESCRIPTION = "크리스마스 디데이 할인";
     private static final Integer DEFAULT_DISCOUNT_AMOUNT = 1000;
     private static final Integer DISCOUNT_INCREASE_PER_DAY = 100;

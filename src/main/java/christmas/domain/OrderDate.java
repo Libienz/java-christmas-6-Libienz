@@ -19,7 +19,7 @@ public class OrderDate {
     }
 
     public Boolean isInPeriod(int startDay, int endDay) {
-        return startDay < dayOfMonth && endDay > dayOfMonth;
+        return startDay <= dayOfMonth && endDay >= dayOfMonth;
     }
 
     public Integer calculateDayOffset(int day) {
