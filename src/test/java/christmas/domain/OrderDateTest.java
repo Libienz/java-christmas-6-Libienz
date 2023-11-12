@@ -41,4 +41,10 @@ class OrderDateTest {
         assertThat(orderDate.isInPeriod(1, 4)).isFalse();
     }
 
+    @DisplayName("날짜가 주어지면 객체와 주어진 날짜의 변위를 계산할 수 있다")
+    @Test
+    void testCalculateOffset() {
+        OrderDate orderDate = OrderDate.from(5);
+        assertThat(orderDate.calculateDayOffset(1)).isEqualTo(4);
+    }
 }
