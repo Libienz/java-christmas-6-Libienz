@@ -16,4 +16,8 @@ public class Order {
     public boolean isOrderDateInPeriod(int startDay, int endDay) {
         return orderDate.isInPeriod(startDay, endDay);
     }
+
+    public int calculateOrderDateOffset(int day) {
+        return orderDate.calculateDayOffset(day);
+    }
 }

@@ -22,6 +22,10 @@ public class OrderDate {
         return startDay < dayOfMonth && endDay > dayOfMonth;
     }
 
+    public Integer calculateDayOffset(int day) {
+        return dayOfMonth - day;
+    }
+
     private void validate(Integer dayOfMonth) {
         validateRange(dayOfMonth);
     }
