@@ -2,14 +2,12 @@ package christmas.service;
 
 import christmas.domain.Order;
 import christmas.dto.DiscountResultDto;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 public class SpecialDiscountPolicy implements DiscountPolicy {
     private static final String DISCOUNT_DESCRIPTION = "특별 할인";
     private static final Integer DISCOUNT_AMOUNT = 1000;
-    private static final Set<Integer> STARRED_DAYS = new HashSet<>(Arrays.asList(3, 10, 17, 24, 25, 31));
+    private static final List<Integer> STARRED_DAYS = List.of(3, 10, 17, 24, 25, 31);
 
     @Override
     public Boolean supports(Order order) {
