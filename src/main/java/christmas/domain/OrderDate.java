@@ -33,6 +33,10 @@ public class OrderDate {
         return dayOfMonth - day;
     }
 
+    public boolean isSameDate(int dayOfMonth) {
+        return this.dayOfMonth == dayOfMonth;
+    }
+
     private void validate(Integer dayOfMonth) {
         validateRange(dayOfMonth);
     }

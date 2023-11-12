@@ -30,4 +30,8 @@ public class Order {
     public DayOfWeek calculateOrderDateDayOfWeek() {
         return orderDate.calculateDayOfWeek();
     }
+
+    public boolean isOrderDateSame(int dayOfMonth) {
+        return orderDate.isSameDate(dayOfMonth);
+    }
 }
