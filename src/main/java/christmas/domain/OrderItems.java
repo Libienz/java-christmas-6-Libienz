@@ -21,6 +21,12 @@ public class OrderItems {
                 .reduce(0, Integer::sum);
     }
 
+    public Integer calculateTotalPrice() {
+        return orderItems.stream()
+                .mapToInt(OrderItem::getPrice)
+                .sum();
+    }
+
     private void validate(List<OrderItem> orderItems) {
         validateDuplicateOrderItem(orderItems);
     }

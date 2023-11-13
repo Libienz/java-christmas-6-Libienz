@@ -21,6 +21,10 @@ public class Order {
         return orderDate.calculateDayOffset(day);
     }
 
+    public int calculatePrice() {
+        return orderItems.calculateTotalPrice();
+    }
+
     public int countCategoryItem(MenuCategory menuCategory) {
         return orderItems.countCategoryItem(menuCategory);
     }

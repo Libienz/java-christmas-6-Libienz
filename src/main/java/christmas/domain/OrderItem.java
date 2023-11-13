@@ -29,6 +29,10 @@ public class OrderItem {
         return menuItem.getItemName();
     }
 
+    public int getPrice() {
+        return menuItem.getPrice() * orderCount;
+    }
+
     private void validate(MenuItem menuItem, Integer orderCount) {
         validateOrderCount(orderCount);
     }
