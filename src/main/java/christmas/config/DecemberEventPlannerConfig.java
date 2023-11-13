@@ -69,7 +69,7 @@ public class DecemberEventPlannerConfig {
     }
 
     public AppliedBenefitCalculatorService appliedBenefitCalculatorService() {
-        return new AppliedBenefitCalculatorService();
+        return new AppliedBenefitCalculatorService(discountService(), giveawayService());
     }
 
     public DecemberEventPlannerController decemberEventPlannerController() {
