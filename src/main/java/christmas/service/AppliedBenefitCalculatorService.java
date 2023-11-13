@@ -2,10 +2,11 @@ package christmas.service;
 
 import christmas.domain.DecemberEventBadge;
 import christmas.domain.Order;
+import christmas.dto.BenefitDetailDto;
 import christmas.dto.BenefitDetailsDto;
-import christmas.dto.DiscountResultDto;
 import christmas.dto.DiscountResultsDto;
 import christmas.dto.GiveawayResultsDto;
+import java.util.List;
 
 public class AppliedBenefitCalculatorService {
 
@@ -23,9 +24,11 @@ public class AppliedBenefitCalculatorService {
         return BenefitDetailsDto.of(discountResultsDto, giveawayResultsDto);
     }
 
-    public Integer calculateTotalBenefitAmount(DiscountResultsDto discountResultsDto,
-                                               GiveawayResultsDto giveawayResultsDto) {
-        return calculateTotalDiscountAmount(discountResultsDto) + calculateTotalGiveawayAmount(giveawayResultsDto);
+    public Integer calculateTotalBenefitAmount(BenefitDetailsDto benefitDetailsDto) {
+        List<BenefitDetailDto> benefitDetailDtos = benefitDetailsDto.getBenefitDetailDtos();
+        return benefitDetailDtos.stream()
+                .mapToInt(BenefitDetailDto::getBenefitAmount)
+                .sum();
     }
 
     public Integer calculateBenefitAppliedPrice(int originalPrice, int benefitAmount) {
@@ -36,15 +39,4 @@ public class AppliedBenefitCalculatorService {
         return DecemberEventBadge.from(benefitAmount);
     }
 
-    private int calculateTotalGiveawayAmount(GiveawayResultsDto giveawayResultsDto) {
-        return giveawayResultsDto.getGiveawayResultDtos().stream()
-                .mapToInt(result -> result.getGiveaway().getPrice() * result.getCount())
-                .sum();
-    }
-
-    private int calculateTotalDiscountAmount(DiscountResultsDto discountResultsDto) {
-        return discountResultsDto.getDiscountResultDtos().stream()
-                .mapToInt(DiscountResultDto::getDiscountAmount)
-                .sum();
-    }
 }
