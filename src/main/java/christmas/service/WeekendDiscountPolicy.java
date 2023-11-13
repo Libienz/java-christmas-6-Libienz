@@ -11,7 +11,7 @@ public class WeekendDiscountPolicy implements DiscountPolicy {
 
     @Override
     public Boolean supports(Order order) {
-        return order.isOrderDateWeekend();
+        return order.isOrderDateWeekend() && order.countCategoryItem(DISCOUNT_MENU_CATEGORY) != 0;
     }
 
     @Override
