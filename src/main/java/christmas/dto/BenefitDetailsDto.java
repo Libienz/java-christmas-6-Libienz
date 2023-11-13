@@ -21,14 +21,13 @@ public class BenefitDetailsDto {
 
     private static List<BenefitDetailDto> combineToBenefitDetails(DiscountResultsDto discountResultsDto,
                                                                   GiveawayResultsDto giveawayResultsDto) {
-        List<BenefitDetailDto> combinedBenefits = Stream.concat(
+        return Stream.concat(
                 discountResultsDto.getDiscountResultDtos().stream()
                         .map(result -> BenefitDetailDto.of(result.getDiscountDescription(),
                                 result.getDiscountAmount())),
                 giveawayResultsDto.getGiveawayResultDtos().stream()
                         .map(result -> BenefitDetailDto.of(result.getDescription(), result.getDiscountAmount()))
         ).toList();
-        return combinedBenefits;
     }
 
     public List<BenefitDetailDto> getBenefitDetailDtos() {
