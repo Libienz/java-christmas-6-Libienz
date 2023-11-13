@@ -57,7 +57,7 @@ class OutputMessageResolverTest {
     @DisplayName("증정 메뉴 메시지를 규칙에 맞게 생성한다")
     @Test
     void testGiveawayMessageResolve() {
-        GiveawayResultDto giveawayResultDto = GiveawayResultDto.of(MenuItem.CHAMPAGNE, 1);
+        GiveawayResultDto giveawayResultDto = GiveawayResultDto.of(MenuItem.CHAMPAGNE, 1, "증정 이벤트");
         GiveawayResultsDto giveawayResultsDto = GiveawayResultsDto.from(List.of(giveawayResultDto));
 
         String message = outputMessageResolver.resolveGiveawayMessage(giveawayResultsDto);
@@ -70,7 +70,7 @@ class OutputMessageResolverTest {
         DiscountResultDto discount1 = DiscountResultDto.of("크리스마스 디데이 할인", 1200);
         DiscountResultDto discount2 = DiscountResultDto.of("평일 할인", 4046);
         DiscountResultDto discount3 = DiscountResultDto.of("특별 할인", 1000);
-        GiveawayResultDto giveawayResultDto = GiveawayResultDto.of(MenuItem.CHAMPAGNE, 1);
+        GiveawayResultDto giveawayResultDto = GiveawayResultDto.of(MenuItem.CHAMPAGNE, 1, "증정 이벤트");
 
         DiscountResultsDto discountResultsDto = DiscountResultsDto.from(List.of(discount1, discount2, discount3));
         GiveawayResultsDto giveawayResultsDto = GiveawayResultsDto.from(List.of(giveawayResultDto));
