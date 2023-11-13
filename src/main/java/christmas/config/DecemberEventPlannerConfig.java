@@ -73,7 +73,7 @@ public class DecemberEventPlannerConfig {
     }
 
     public DecemberEventPlannerController decemberEventPlannerController() {
-        return new DecemberEventPlannerController(inputView(), outputView(), discountService(), giveawayService(),
-                appliedBenefitCalculatorService());
+        return new DecemberEventPlannerController(inputView(), outputView(), appliedBenefitCalculatorService());
     }
+
 }

@@ -1,8 +1,8 @@
 package christmas.view;
 
 import christmas.domain.DecemberEventBadge;
-import christmas.dto.DiscountResultDto;
-import christmas.dto.DiscountResultsDto;
+import christmas.dto.BenefitDetailDto;
+import christmas.dto.BenefitDetailsDto;
 import christmas.dto.GiveawayResultDto;
 import christmas.dto.GiveawayResultsDto;
 import christmas.dto.OrderDateDto;
@@ -45,22 +45,13 @@ public class OutputMessageResolver {
                 .collect(Collectors.joining("\n"));
     }
 
-    public String resolveAppliedBenefitMessage(DiscountResultsDto discountResultsDto,
-                                               GiveawayResultsDto giveawayResultsDto) {
-        List<DiscountResultDto> discountResultDtos = discountResultsDto.getDiscountResultDtos();
-        List<GiveawayResultDto> giveawayResultDtos = giveawayResultsDto.getGiveawayResultDtos();
-
-        String discountMessage = discountResultDtos.stream()
-                .map(result -> result.getDiscountDescription() + ": -" + formatCurrency(result.getDiscountAmount()))
+    public String resolveAppliedBenefitMessage(BenefitDetailsDto benefitDetailsDto) {
+        List<BenefitDetailDto> benefitDetailDtos = benefitDetailsDto.getBenefitDetailDtos();
+        return APPLIED_BENEFIT_MESSAGE_PREFIX + benefitDetailDtos.stream()
+                .map(detailDto -> String.format("%s: -%,d원", detailDto.getDescription(), detailDto.getBenefitAmount()))
                 .collect(Collectors.joining("\n"));
-
-        String giveawayMessage = giveawayResultDtos.stream()
-                .map(result -> "증정 이벤트: -" + formatCurrency(result.getGiveaway().getPrice()))
-                .collect(Collectors.joining("\n"));
-
-        return APPLIED_BENEFIT_MESSAGE_PREFIX + discountMessage + "\n" + giveawayMessage;
     }
-
+    
     public String resolveBenefitAmountMessage(int benefitAmount) {
         return BENEFIT_AMOUNT_MESSAGE_PREFIX + "-" + formatCurrency(benefitAmount);
     }

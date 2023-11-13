@@ -1,7 +1,7 @@
 package christmas.view;
 
 import christmas.domain.DecemberEventBadge;
-import christmas.dto.DiscountResultsDto;
+import christmas.dto.BenefitDetailsDto;
 import christmas.dto.GiveawayResultsDto;
 import christmas.dto.OrderDateDto;
 import christmas.dto.OrderItemsDto;
@@ -35,9 +35,8 @@ public class OutputView {
         System.out.println(outputMessageResolver.resolveGiveawayMessage(giveawayResultsDto));
     }
 
-    public void printAppliedBenefitInformation(DiscountResultsDto discountResultsDto,
-                                               GiveawayResultsDto giveawayResultsDto) {
-        System.out.println(outputMessageResolver.resolveAppliedBenefitMessage(discountResultsDto, giveawayResultsDto));
+    public void printAppliedBenefitInformation(BenefitDetailsDto benefitDetailsDto) {
+        System.out.println(outputMessageResolver.resolveAppliedBenefitMessage(benefitDetailsDto));
     }
 
     public void printBenefitAmount(Integer benefitAmount) {

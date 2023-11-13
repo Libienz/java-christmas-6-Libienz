@@ -7,6 +7,7 @@ import christmas.domain.MenuItem;
 import christmas.domain.OrderDate;
 import christmas.domain.OrderItem;
 import christmas.domain.OrderItems;
+import christmas.dto.BenefitDetailsDto;
 import christmas.dto.DiscountResultDto;
 import christmas.dto.DiscountResultsDto;
 import christmas.dto.GiveawayResultDto;
@@ -75,7 +76,8 @@ class OutputMessageResolverTest {
         DiscountResultsDto discountResultsDto = DiscountResultsDto.from(List.of(discount1, discount2, discount3));
         GiveawayResultsDto giveawayResultsDto = GiveawayResultsDto.from(List.of(giveawayResultDto));
 
-        String message = outputMessageResolver.resolveAppliedBenefitMessage(discountResultsDto, giveawayResultsDto);
+        String message = outputMessageResolver.resolveAppliedBenefitMessage(
+                BenefitDetailsDto.of(discountResultsDto, giveawayResultsDto));
         assertThat(message.trim()).isEqualTo(
                 "<혜택 내역>\n크리스마스 디데이 할인: -1,200원\n평일 할인: -4,046원\n특별 할인: -1,000원\n증정 이벤트: -25,000원".trim());
     }
