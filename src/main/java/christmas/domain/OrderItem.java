@@ -29,6 +29,10 @@ public class OrderItem {
         return menuItem.getItemName();
     }
 
+    public Integer getOrderCount() {
+        return orderCount;
+    }
+
     public int getPrice() {
         return menuItem.getPrice() * orderCount;
     }

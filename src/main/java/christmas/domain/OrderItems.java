@@ -1,6 +1,9 @@
 package christmas.domain;
 
+import christmas.dto.OrderItemsDto;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class OrderItems {
     private static final String INVALID_ORDER = "[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.";
@@ -25,6 +28,12 @@ public class OrderItems {
         return orderItems.stream()
                 .mapToInt(OrderItem::getPrice)
                 .sum();
+    }
+
+    public OrderItemsDto toOrderItemsDto() {
+        Map<String, Integer> orderItemsMap = orderItems.stream()
+                .collect(Collectors.toMap(OrderItem::getMenuName, OrderItem::getOrderCount));
+        return OrderItemsDto.from(orderItemsMap);
     }
 
     private void validate(List<OrderItem> orderItems) {
