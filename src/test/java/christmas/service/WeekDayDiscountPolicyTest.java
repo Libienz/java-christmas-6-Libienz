@@ -42,7 +42,7 @@ class WeekDayDiscountPolicyTest {
     @ParameterizedTest
     @ValueSource(ints = {3, 4, 5, 6, 7})
     void testSupportableOrder(int day) {
-        OrderItem item1 = OrderItem.of(MenuItem.BARBECUE_RIBS, 3);
+        OrderItem item1 = OrderItem.of(MenuItem.CHOCOLATE_CAKE, 3);
         OrderItem item2 = OrderItem.of(MenuItem.CAESAR_SALAD, 3);
         OrderItem item3 = OrderItem.of(MenuItem.ZERO_COLA, 3);
         List<OrderItem> orderItems = List.of(item1, item2, item3);
