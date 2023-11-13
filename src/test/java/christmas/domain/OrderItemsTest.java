@@ -38,8 +38,19 @@ class OrderItemsTest {
         OrderItem orderItem1 = OrderItem.of(MenuItem.T_BONE_STEAK, 3);
         OrderItem orderItem2 = OrderItem.of(MenuItem.SEAFOOD_PASTA, 3);
         OrderItem orderItem3 = OrderItem.of(MenuItem.CHOCOLATE_CAKE, 3);
-        List<OrderItem> orderItems = List.of(orderItem1, orderItem2);
+        List<OrderItem> orderItems = List.of(orderItem1, orderItem2, orderItem3);
 
         assertThat(OrderItems.from(orderItems).countCategoryItem(MenuCategory.MAIN)).isEqualTo(6);
+    }
+
+    @DisplayName("총 주문 금액을 계산할 수 있다")
+    @Test
+    void testCalculateTotalPrice() {
+        OrderItem orderItem1 = OrderItem.of(MenuItem.T_BONE_STEAK, 3);
+        OrderItem orderItem2 = OrderItem.of(MenuItem.SEAFOOD_PASTA, 3);
+        OrderItem orderItem3 = OrderItem.of(MenuItem.CHOCOLATE_CAKE, 3);
+        List<OrderItem> orderItems = List.of(orderItem1, orderItem2, orderItem3);
+
+        assertThat(OrderItems.from(orderItems).calculateTotalPrice()).isEqualTo(315000);
     }
 }
