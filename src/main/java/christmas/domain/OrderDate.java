@@ -1,5 +1,6 @@
 package christmas.domain;
 
+import christmas.dto.OrderDateDto;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 
@@ -19,6 +20,10 @@ public class OrderDate {
 
     public static OrderDate from(int dayOfMonth) {
         return new OrderDate(dayOfMonth);
+    }
+
+    public OrderDateDto toOrderDateDto() {
+        return OrderDateDto.from(dayOfMonth);
     }
 
     public Boolean isInPeriod(int startDay, int endDay) {
