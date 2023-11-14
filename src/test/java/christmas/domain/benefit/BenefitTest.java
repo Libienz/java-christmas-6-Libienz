@@ -34,12 +34,6 @@ class BenefitTest {
         assertThat(testBenefit.calculateTotalBenefitAmount()).isEqualTo(31246);
     }
 
-    @DisplayName("할인이 적용된 예상 결제 금액을 계산할 수 있다")
-    @Test
-    void testCalculateBenefitAppliedPrice() {
-        assertThat(testBenefit.calculateDiscountedPrice(142000)).isEqualTo(135754);
-    }
-
     @DisplayName("혜택 내역을 생성해낼 수 있다")
     @Test
     void testCreateBenefitDetails() {

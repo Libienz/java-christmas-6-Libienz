@@ -35,6 +35,10 @@ public class Order {
         return orderDate.isWeekend();
     }
 
+    public int calculateDiscountedPrice(int benefitAmount) {
+        return calculatePrice() - benefitAmount;
+    }
+
     public boolean isOrderDateSame(int dayOfMonth) {
         return orderDate.isSameDate(dayOfMonth);
     }

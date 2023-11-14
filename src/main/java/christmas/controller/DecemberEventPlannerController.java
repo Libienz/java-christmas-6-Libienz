@@ -37,7 +37,7 @@ public class DecemberEventPlannerController {
         outputView.printBenefitDetails(benefit.toBenefitDetailsDto());
         Integer benefitAmount = benefit.calculateTotalBenefitAmount();
         outputView.printBenefitAmount(benefitAmount);
-        outputView.printDiscountedPrice(benefit.calculateDiscountedPrice(order.calculatePrice()));
+        outputView.printDiscountedPrice(order.calculateDiscountedPrice(benefitAmount));
 
         outputView.printEventBadge(benefit.calculateAchievableBadge(benefitAmount).toEventBadgeDto());
     }

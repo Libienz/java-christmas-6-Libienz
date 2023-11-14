@@ -64,4 +64,10 @@ class OrderTest {
     void testOrderDateSame() {
         assertThat(testOrder.isOrderDateSame(10)).isTrue();
     }
+
+    @DisplayName("할인이 적용된 예상 결제 금액을 계산할 수 있다")
+    @Test
+    void testCalculateBenefitAppliedPrice() {
+        assertThat(testOrder.calculateDiscountedPrice(5000)).isEqualTo(310000);
+    }
 }
