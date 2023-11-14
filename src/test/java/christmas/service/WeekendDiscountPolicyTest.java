@@ -62,7 +62,7 @@ class WeekendDiscountPolicyTest {
         assertThat(weekendDiscountPolicy.supports(order)).isFalse();
     }
 
-    @DisplayName("금요일 토요일에는 평일 할인이 적용되지 않는다")
+    @DisplayName("금요일 토요일에는 주말 할인이 적용된다")
     @ParameterizedTest
     @ValueSource(ints = {8, 9})
     void testNonSupportableOrder(int day) {
@@ -74,5 +74,17 @@ class WeekendDiscountPolicyTest {
         Order order = Order.of(OrderItems.from(orderItems), OrderDate.from(day));
 
         assertThat(weekendDiscountPolicy.supports(order)).isTrue();
+    }
+
+    @DisplayName("메인 메뉴를 주문하지 않았다면 주말 할인이 적용되지 않는다")
+    @Test
+    void testNoSupportsForNoMainMenuOrder() {
+        OrderItem item1 = OrderItem.of(MenuItem.CHOCOLATE_CAKE, 3);
+        OrderItem item2 = OrderItem.of(MenuItem.CAESAR_SALAD, 3);
+        OrderItem item3 = OrderItem.of(MenuItem.ZERO_COLA, 3);
+        List<OrderItem> orderItems = List.of(item1, item2, item3);
+
+        Order order = Order.of(OrderItems.from(orderItems), OrderDate.from(8));
+        assertThat(weekendDiscountPolicy.supports(order)).isFalse();
     }
 }

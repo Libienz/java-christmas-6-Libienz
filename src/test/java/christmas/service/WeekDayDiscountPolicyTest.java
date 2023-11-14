@@ -68,10 +68,23 @@ class WeekDayDiscountPolicyTest {
     void testNonSupportableOrder(int day) {
         OrderItem item1 = OrderItem.of(MenuItem.BARBECUE_RIBS, 3);
         OrderItem item2 = OrderItem.of(MenuItem.CAESAR_SALAD, 3);
-        OrderItem item3 = OrderItem.of(MenuItem.ZERO_COLA, 3);
+        OrderItem item3 = OrderItem.of(MenuItem.CHOCOLATE_CAKE, 3);
         List<OrderItem> orderItems = List.of(item1, item2, item3);
 
         Order order = Order.of(OrderItems.from(orderItems), OrderDate.from(day));
+
+        assertThat(weekDayDiscountPolicy.supports(order)).isFalse();
+    }
+
+    @DisplayName("디저트 메뉴를 주문하지 않았다면 평일 할인이 적용되지 않는다")
+    @Test
+    void testNoSupportsForNoDessertMenuOrder() {
+        OrderItem item1 = OrderItem.of(MenuItem.BARBECUE_RIBS, 3);
+        OrderItem item2 = OrderItem.of(MenuItem.CAESAR_SALAD, 3);
+        OrderItem item3 = OrderItem.of(MenuItem.ZERO_COLA, 3);
+        List<OrderItem> orderItems = List.of(item1, item2, item3);
+
+        Order order = Order.of(OrderItems.from(orderItems), OrderDate.from(3));
 
         assertThat(weekDayDiscountPolicy.supports(order)).isFalse();
     }

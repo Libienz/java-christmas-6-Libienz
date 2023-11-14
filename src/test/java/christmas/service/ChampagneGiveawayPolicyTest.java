@@ -2,12 +2,12 @@ package christmas.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import christmas.domain.FreeGift;
 import christmas.domain.MenuItem;
 import christmas.domain.Order;
 import christmas.domain.OrderDate;
 import christmas.domain.OrderItem;
 import christmas.domain.OrderItems;
-import christmas.domain.FreeGift;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -37,7 +37,7 @@ class ChampagneGiveawayPolicyTest {
     @DisplayName("총 주문 금액이 120000원 미만이면 샴페인을 증정 받지 못한다")
     @Test
     void testChampagneGiveawayNonAchievable() {
-        OrderItem item1 = OrderItem.of(MenuItem.ZERO_COLA, 3);
+        OrderItem item1 = OrderItem.of(MenuItem.BARBECUE_RIBS, 1);
         List<OrderItem> orderItems = List.of(item1);
 
         Order order = Order.of(OrderItems.from(orderItems), OrderDate.from(5));
