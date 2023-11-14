@@ -34,11 +34,7 @@ public class OrderItem {
     public String getMenuName() {
         return menuItem.getItemName();
     }
-
-    public Integer getOrderCount() {
-        return orderCount;
-    }
-
+    
     public boolean isBeverageOrder() {
         return menuItem.getCategory() == MenuCategory.BEVERAGE;
     }
