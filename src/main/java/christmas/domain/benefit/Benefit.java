@@ -28,6 +28,10 @@ public class Benefit {
         return discountDetails.calculateDiscountedPrice() + freeGifts.calculateFreeGiftsPrice();
     }
 
+    public Integer calculateDiscountedPrice() {
+        return discountDetails.calculateDiscountedPrice();
+    }
+
     public FreeGiftsDto toFreeGiftsDto() {
         return freeGifts.toFreeGiftsDto();
     }
