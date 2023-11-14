@@ -1,5 +1,6 @@
 package christmas.domain;
 
+import christmas.dto.BenefitDetailDto;
 import christmas.dto.FreeGiftsDto;
 import java.util.List;
 
@@ -26,7 +27,9 @@ public class FreeGifts {
                 .toList());
     }
 
-    public List<FreeGift> getGiveawayResultDtos() {
-        return freeGifts;
+    public List<BenefitDetailDto> toBenefitDetailDtos() {
+        return freeGifts.stream()
+                .map(gift -> BenefitDetailDto.of(gift.getDescription(), gift.getDiscountAmount()))
+                .toList();
     }
 }

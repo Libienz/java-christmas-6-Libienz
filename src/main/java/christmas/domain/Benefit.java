@@ -17,7 +17,7 @@ public class Benefit {
     }
 
     public BenefitDetailsDto toBenefitDetailsDto() {
-        return BenefitDetailsDto.of(discountDetails, freeGifts);
+        return BenefitDetailsDto.of(discountDetails.toBenefitDetailDtos(), freeGifts.toBenefitDetailDtos());
     }
 
     public Integer calculateTotalBenefitAmount() {

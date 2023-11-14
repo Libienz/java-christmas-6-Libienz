@@ -1,5 +1,6 @@
 package christmas.domain;
 
+import christmas.dto.BenefitDetailDto;
 import java.util.List;
 
 public class DiscountDetails {
@@ -20,7 +21,9 @@ public class DiscountDetails {
                 .sum();
     }
 
-    public List<DiscountDetail> getDiscountResultDtos() {
-        return discountDetails;
+    public List<BenefitDetailDto> toBenefitDetailDtos() {
+        return discountDetails.stream()
+                .map(discount -> BenefitDetailDto.of(discount.getDiscountDescription(), discount.getDiscountAmount()))
+                .toList();
     }
 }
