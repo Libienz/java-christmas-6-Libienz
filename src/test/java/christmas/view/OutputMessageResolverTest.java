@@ -10,8 +10,8 @@ import christmas.domain.OrderItems;
 import christmas.dto.BenefitDetailsDto;
 import christmas.dto.DiscountDetail;
 import christmas.dto.DiscountDetails;
-import christmas.dto.GiveawayResultDto;
-import christmas.dto.GiveawayResultsDto;
+import christmas.dto.FreeGift;
+import christmas.dto.FreeGifts;
 import christmas.dto.OrderItemsDto;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
@@ -58,10 +58,10 @@ class OutputMessageResolverTest {
     @DisplayName("증정 메뉴 메시지를 규칙에 맞게 생성한다")
     @Test
     void testGiveawayMessageResolve() {
-        GiveawayResultDto giveawayResultDto = GiveawayResultDto.of(MenuItem.CHAMPAGNE, 1, "증정 이벤트");
-        GiveawayResultsDto giveawayResultsDto = GiveawayResultsDto.from(List.of(giveawayResultDto));
+        FreeGift freeGift = FreeGift.of(MenuItem.CHAMPAGNE, 1, "증정 이벤트");
+        FreeGifts freeGifts = FreeGifts.from(List.of(freeGift));
 
-        String message = outputMessageResolver.resolveGiveawayMessage(giveawayResultsDto);
+        String message = outputMessageResolver.resolveGiveawayMessage(freeGifts);
         assertThat(message.trim()).isEqualTo("<증정 메뉴>\n샴페인 1개".trim());
     }
 
@@ -71,13 +71,13 @@ class OutputMessageResolverTest {
         DiscountDetails discount1 = DiscountDetails.of("크리스마스 디데이 할인", 1200);
         DiscountDetails discount2 = DiscountDetails.of("평일 할인", 4046);
         DiscountDetails discount3 = DiscountDetails.of("특별 할인", 1000);
-        GiveawayResultDto giveawayResultDto = GiveawayResultDto.of(MenuItem.CHAMPAGNE, 1, "증정 이벤트");
+        FreeGift freeGift = FreeGift.of(MenuItem.CHAMPAGNE, 1, "증정 이벤트");
 
         DiscountDetail discountDetail = DiscountDetail.from(List.of(discount1, discount2, discount3));
-        GiveawayResultsDto giveawayResultsDto = GiveawayResultsDto.from(List.of(giveawayResultDto));
+        FreeGifts freeGifts = FreeGifts.from(List.of(freeGift));
 
         String message = outputMessageResolver.resolveAppliedBenefitMessage(
-                BenefitDetailsDto.of(discountDetail, giveawayResultsDto));
+                BenefitDetailsDto.of(discountDetail, freeGifts));
         assertThat(message.trim()).isEqualTo(
                 "<혜택 내역>\n크리스마스 디데이 할인: -1,200원\n평일 할인: -4,046원\n특별 할인: -1,000원\n증정 이벤트: -25,000원".trim());
     }

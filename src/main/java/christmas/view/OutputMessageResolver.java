@@ -3,8 +3,8 @@ package christmas.view;
 import christmas.domain.DecemberEventBadge;
 import christmas.dto.BenefitDetailDto;
 import christmas.dto.BenefitDetailsDto;
-import christmas.dto.GiveawayResultDto;
-import christmas.dto.GiveawayResultsDto;
+import christmas.dto.FreeGift;
+import christmas.dto.FreeGifts;
 import christmas.dto.OrderDateDto;
 import christmas.dto.OrderItemsDto;
 import java.util.List;
@@ -38,12 +38,12 @@ public class OutputMessageResolver {
         return ORIGINAL_PRICE_MESSAGE_PREFIX + formatCurrency(originalPrice);
     }
 
-    public String resolveGiveawayMessage(GiveawayResultsDto giveawayResultsDto) {
-        List<GiveawayResultDto> giveawayResultDtos = giveawayResultsDto.getGiveawayResultDtos();
-        if (giveawayResultDtos.isEmpty()) {
+    public String resolveGiveawayMessage(FreeGifts giveawayResultsDto) {
+        List<FreeGift> freeGifts = giveawayResultsDto.getGiveawayResultDtos();
+        if (freeGifts.isEmpty()) {
             return GIVEAWAY_MESSAGE_PREFIX + RESULT_EMPTY_MESSAGE;
         }
-        return GIVEAWAY_MESSAGE_PREFIX + giveawayResultDtos.stream()
+        return GIVEAWAY_MESSAGE_PREFIX + freeGifts.stream()
                 .map(resultDto -> resultDto.getGiveaway().getItemName() + " " + resultDto.getCount() + "개")
                 .collect(Collectors.joining(LINE_SEPARATOR));
     }

@@ -6,7 +6,7 @@ import christmas.dto.BenefitDetailDto;
 import christmas.dto.BenefitDetailsDto;
 import christmas.dto.DiscountDetail;
 import christmas.dto.DiscountDetails;
-import christmas.dto.GiveawayResultsDto;
+import christmas.dto.FreeGifts;
 import java.util.List;
 
 public class AppliedBenefitCalculatorService {
@@ -21,8 +21,8 @@ public class AppliedBenefitCalculatorService {
 
     public BenefitDetailsDto calculateBenefitDetails(Order order) {
         DiscountDetail discountDetail = discountService.applyDiscount(order);
-        GiveawayResultsDto giveawayResultsDto = giveawayService.applyGiveaway(order);
-        return BenefitDetailsDto.of(discountDetail, giveawayResultsDto);
+        FreeGifts freeGifts = giveawayService.applyGiveaway(order);
+        return BenefitDetailsDto.of(discountDetail, freeGifts);
     }
 
     public Integer calculateTotalBenefitAmount(BenefitDetailsDto benefitDetailsDto) {
@@ -43,7 +43,7 @@ public class AppliedBenefitCalculatorService {
         return originalPrice - discountedPrice;
     }
 
-    public GiveawayResultsDto calculateGiveaway(Order order) {
+    public FreeGifts calculateGiveaway(Order order) {
         return giveawayService.applyGiveaway(order);
     }
 

@@ -2,7 +2,7 @@ package christmas.service;
 
 import christmas.domain.MenuItem;
 import christmas.domain.Order;
-import christmas.dto.GiveawayResultDto;
+import christmas.dto.FreeGift;
 
 public class ChampagneGiveawayPolicy implements GiveawayPolicy {
     private static final MenuItem GIVEAWAY_MENU_ITEM = MenuItem.CHAMPAGNE;
@@ -23,8 +23,8 @@ public class ChampagneGiveawayPolicy implements GiveawayPolicy {
     }
 
     @Override
-    public GiveawayResultDto applyGiveaway(Order order) {
-        return GiveawayResultDto.of(GIVEAWAY_MENU_ITEM, GIVEAWAY_COUNT, DESCRIPTION);
+    public FreeGift applyGiveaway(Order order) {
+        return FreeGift.of(GIVEAWAY_MENU_ITEM, GIVEAWAY_COUNT, DESCRIPTION);
     }
 
     private boolean insufficientOrderAmountForGiveaway(Order order) {

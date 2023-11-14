@@ -7,7 +7,7 @@ import christmas.domain.Order;
 import christmas.domain.OrderDate;
 import christmas.domain.OrderItem;
 import christmas.domain.OrderItems;
-import christmas.dto.GiveawayResultDto;
+import christmas.dto.FreeGift;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -63,9 +63,9 @@ class ChampagneGiveawayPolicyTest {
         List<OrderItem> orderItems = List.of(item1, item2, item3);
 
         Order order = Order.of(OrderItems.from(orderItems), OrderDate.from(5));
-        GiveawayResultDto giveawayResultDto = champagneGiveawayPolicy.applyGiveaway(order);
+        FreeGift freeGift = champagneGiveawayPolicy.applyGiveaway(order);
 
-        assertThat(giveawayResultDto.getGiveaway()).isEqualTo(MenuItem.CHAMPAGNE);
+        assertThat(freeGift.getGiveaway()).isEqualTo(MenuItem.CHAMPAGNE);
     }
 
     @DisplayName("증정되는 개수는 1개이다")
@@ -77,8 +77,8 @@ class ChampagneGiveawayPolicyTest {
         List<OrderItem> orderItems = List.of(item1, item2, item3);
 
         Order order = Order.of(OrderItems.from(orderItems), OrderDate.from(5));
-        GiveawayResultDto giveawayResultDto = champagneGiveawayPolicy.applyGiveaway(order);
+        FreeGift freeGift = champagneGiveawayPolicy.applyGiveaway(order);
 
-        assertThat(giveawayResultDto.getCount()).isEqualTo(1);
+        assertThat(freeGift.getCount()).isEqualTo(1);
     }
 }

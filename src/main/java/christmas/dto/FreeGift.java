@@ -2,19 +2,19 @@ package christmas.dto;
 
 import christmas.domain.MenuItem;
 
-public class GiveawayResultDto {
+public class FreeGift {
     private final MenuItem giveaway;
     private final Integer count;
     private final String description;
 
-    public GiveawayResultDto(MenuItem giveaway, Integer count, String description) {
+    public FreeGift(MenuItem giveaway, Integer count, String description) {
         this.giveaway = giveaway;
         this.count = count;
         this.description = description;
     }
 
-    public static GiveawayResultDto of(MenuItem giveaway, Integer count, String description) {
-        return new GiveawayResultDto(giveaway, count, description);
+    public static FreeGift of(MenuItem giveaway, Integer count, String description) {
+        return new FreeGift(giveaway, count, description);
     }
 
     public String getDescription() {

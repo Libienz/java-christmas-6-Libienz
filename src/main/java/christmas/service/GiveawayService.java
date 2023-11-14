@@ -1,8 +1,8 @@
 package christmas.service;
 
 import christmas.domain.Order;
-import christmas.dto.GiveawayResultDto;
-import christmas.dto.GiveawayResultsDto;
+import christmas.dto.FreeGift;
+import christmas.dto.FreeGifts;
 import java.util.List;
 
 public class GiveawayService {
@@ -12,11 +12,11 @@ public class GiveawayService {
         this.giveawayPolicies = giveawayPolicies;
     }
 
-    public GiveawayResultsDto applyGiveaway(Order order) {
-        List<GiveawayResultDto> giveawayResultDtos = giveawayPolicies.stream()
+    public FreeGifts applyGiveaway(Order order) {
+        List<FreeGift> freeGifts = giveawayPolicies.stream()
                 .filter(giveawayPolicy -> giveawayPolicy.supports(order))
                 .map(giveawayPolicy -> giveawayPolicy.applyGiveaway(order))
                 .toList();
-        return GiveawayResultsDto.from(giveawayResultDtos);
+        return FreeGifts.from(freeGifts);
     }
 }

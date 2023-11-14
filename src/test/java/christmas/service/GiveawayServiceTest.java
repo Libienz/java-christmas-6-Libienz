@@ -7,8 +7,8 @@ import christmas.domain.Order;
 import christmas.domain.OrderDate;
 import christmas.domain.OrderItem;
 import christmas.domain.OrderItems;
-import christmas.dto.GiveawayResultDto;
-import christmas.dto.GiveawayResultsDto;
+import christmas.dto.FreeGift;
+import christmas.dto.FreeGifts;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -33,10 +33,10 @@ class GiveawayServiceTest {
         List<OrderItem> orderItems = List.of(item1, item2, item3);
 
         Order order = Order.of(OrderItems.from(orderItems), OrderDate.from(4));
-        GiveawayResultsDto giveawayResultsDto = giveawayService.applyGiveaway(order);
-        List<GiveawayResultDto> giveawayResultDtos = giveawayResultsDto.getGiveawayResultDtos();
+        FreeGifts giveawayResultsDto = giveawayService.applyGiveaway(order);
+        List<FreeGift> freeGifts = giveawayResultsDto.getGiveawayResultDtos();
 
-        assertThat(giveawayResultDtos.size()).isEqualTo(1);
+        assertThat(freeGifts.size()).isEqualTo(1);
     }
 
     @DisplayName("샴페인 증정 정책만을 만족할 경우 샴페인이 증정된다")
@@ -48,10 +48,10 @@ class GiveawayServiceTest {
         List<OrderItem> orderItems = List.of(item1, item2, item3);
 
         Order order = Order.of(OrderItems.from(orderItems), OrderDate.from(4));
-        GiveawayResultsDto giveawayResultsDto = giveawayService.applyGiveaway(order);
-        List<GiveawayResultDto> giveawayResultDtos = giveawayResultsDto.getGiveawayResultDtos();
+        FreeGifts giveawayResultsDto = giveawayService.applyGiveaway(order);
+        List<FreeGift> freeGifts = giveawayResultsDto.getGiveawayResultDtos();
 
-        assertThat(giveawayResultDtos.get(0).getGiveaway()).isEqualTo(MenuItem.CHAMPAGNE);
+        assertThat(freeGifts.get(0).getGiveaway()).isEqualTo(MenuItem.CHAMPAGNE);
     }
 
     @DisplayName("샴페인 증정 정책만을 만족할 경우 증정 개수는 1개이다")
@@ -63,9 +63,9 @@ class GiveawayServiceTest {
         List<OrderItem> orderItems = List.of(item1, item2, item3);
 
         Order order = Order.of(OrderItems.from(orderItems), OrderDate.from(4));
-        GiveawayResultsDto giveawayResultsDto = giveawayService.applyGiveaway(order);
-        List<GiveawayResultDto> giveawayResultDtos = giveawayResultsDto.getGiveawayResultDtos();
+        FreeGifts giveawayResultsDto = giveawayService.applyGiveaway(order);
+        List<FreeGift> freeGifts = giveawayResultsDto.getGiveawayResultDtos();
 
-        assertThat(giveawayResultDtos.get(0).getCount()).isEqualTo(1);
+        assertThat(freeGifts.get(0).getCount()).isEqualTo(1);
     }
 }
