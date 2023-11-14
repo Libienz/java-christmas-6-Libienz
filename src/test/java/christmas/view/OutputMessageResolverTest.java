@@ -2,6 +2,7 @@ package christmas.view;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import christmas.domain.benefit.Benefit;
 import christmas.domain.benefit.DecemberEventBadge;
 import christmas.domain.benefit.DiscountDetail;
 import christmas.domain.benefit.DiscountDetails;
@@ -11,7 +12,6 @@ import christmas.domain.menu.MenuItem;
 import christmas.domain.order.OrderDate;
 import christmas.domain.order.OrderItem;
 import christmas.domain.order.OrderItems;
-import christmas.dto.BenefitDetailsDto;
 import christmas.dto.OrderItemsDto;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
@@ -82,8 +82,8 @@ class OutputMessageResolverTest {
         DiscountDetails discountDetails = DiscountDetails.from(List.of(discount1, discount2, discount3));
         FreeGifts freeGifts = FreeGifts.from(List.of(freeGift));
 
-        String message = outputMessageResolver.resolveAppliedBenefitMessage(
-                BenefitDetailsDto.of(discountDetails.toBenefitDetailDtos(), freeGifts.toBenefitDetailDtos()));
+        Benefit benefit = Benefit.of(discountDetails, freeGifts);
+        String message = outputMessageResolver.resolveAppliedBenefitMessage(benefit.toBenefitDetailsDto());
         assertThat(message.trim()).isEqualTo(
                 ("<혜택 내역>" + LINE_SEPARATOR
                         + "크리스마스 디데이 할인: -1,200원" + LINE_SEPARATOR

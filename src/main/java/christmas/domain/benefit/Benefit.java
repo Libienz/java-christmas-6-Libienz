@@ -1,7 +1,11 @@
 package christmas.domain.benefit;
 
+import christmas.dto.BenefitDetailDto;
 import christmas.dto.BenefitDetailsDto;
 import christmas.dto.FreeGiftsDto;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Benefit {
     private final DiscountDetails discountDetails;
@@ -17,7 +21,7 @@ public class Benefit {
     }
 
     public BenefitDetailsDto toBenefitDetailsDto() {
-        return BenefitDetailsDto.of(discountDetails.toBenefitDetailDtos(), freeGifts.toBenefitDetailDtos());
+        return BenefitDetailsDto.of(combineToBenefitDetailDtos());
     }
 
     public Integer calculateTotalBenefitAmount() {
@@ -34,5 +38,10 @@ public class Benefit {
 
     public DecemberEventBadge calculateAchievableBadge(int benefitAmount) {
         return DecemberEventBadge.from(benefitAmount);
+    }
+
+    private List<BenefitDetailDto> combineToBenefitDetailDtos() {
+        return Stream.concat(discountDetails.toBenefitDetailDtos().stream(), freeGifts.toBenefitDetailDtos().stream())
+                .collect(Collectors.toList());
     }
 }
