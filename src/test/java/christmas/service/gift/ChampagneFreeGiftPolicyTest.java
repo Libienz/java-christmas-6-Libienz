@@ -14,12 +14,12 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 @DisplayName("샴페인 증정 테스트 ")
-class ChampagneGiveawayPolicyTest {
-    private ChampagneGiveawayPolicy champagneGiveawayPolicy;
+class ChampagneFreeGiftPolicyTest {
+    private ChampagneFreeGiftPolicy champagneGiveawayPolicy;
 
     @BeforeEach
     void setUp() {
-        champagneGiveawayPolicy = new ChampagneGiveawayPolicy();
+        champagneGiveawayPolicy = new ChampagneFreeGiftPolicy();
     }
 
     @DisplayName("총 주문 금액이 120000원 이상이면 샴페인을 증정할 수 있다")
@@ -63,9 +63,9 @@ class ChampagneGiveawayPolicyTest {
         List<OrderItem> orderItems = List.of(item1, item2, item3);
 
         Order order = Order.of(OrderItems.from(orderItems), OrderDate.from(5));
-        FreeGift freeGift = champagneGiveawayPolicy.applyGiveaway(order);
+        FreeGift freeGift = champagneGiveawayPolicy.calculateApplicableFreeGift(order);
 
-        assertThat(freeGift.getGiveaway()).isEqualTo(MenuItem.CHAMPAGNE);
+        assertThat(freeGift.toFreeGiftDto().getMenuName()).isEqualTo("샴페인");
     }
 
     @DisplayName("증정되는 개수는 1개이다")
@@ -77,8 +77,8 @@ class ChampagneGiveawayPolicyTest {
         List<OrderItem> orderItems = List.of(item1, item2, item3);
 
         Order order = Order.of(OrderItems.from(orderItems), OrderDate.from(5));
-        FreeGift freeGift = champagneGiveawayPolicy.applyGiveaway(order);
+        FreeGift freeGift = champagneGiveawayPolicy.calculateApplicableFreeGift(order);
 
-        assertThat(freeGift.getCount()).isEqualTo(1);
+        assertThat(freeGift.toFreeGiftDto().getCount()).isEqualTo(1);
     }
 }

@@ -3,8 +3,8 @@ package christmas.service.gift;
 import christmas.domain.benefit.FreeGift;
 import christmas.domain.order.Order;
 
-public interface GiveawayPolicy {
+public interface FreeGiftPolicy {
     Boolean supports(Order order);
 
-    FreeGift applyGiveaway(Order order);
+    FreeGift calculateApplicableFreeGift(Order order);
 }

@@ -4,10 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import christmas.domain.menu.MenuCategory;
 import christmas.domain.menu.MenuItem;
-import christmas.domain.order.Order;
-import christmas.domain.order.OrderDate;
-import christmas.domain.order.OrderItem;
-import christmas.domain.order.OrderItems;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -42,7 +38,7 @@ class OrderTest {
 
     @DisplayName("주문 날짜와 특정 날짜의 일수 차이를 계산할 수 있다")
     void testCalculateDateOffset() {
-        assertThat(testOrder.calculateOrderDateOffset(20)).isEqualTo(10);
+        assertThat(testOrder.calculateDateOffset(20)).isEqualTo(10);
     }
 
     @DisplayName("총 주문 금액을 계산할 수 있다")
@@ -60,7 +56,7 @@ class OrderTest {
     @DisplayName("주말에 발생한 주문인지 알 수 있다")
     @Test
     void testIsWeekendOrder() {
-        assertThat(testOrder.isOrderDateWeekend()).isFalse();
+        assertThat(testOrder.isWeekendOrder()).isFalse();
     }
 
     @DisplayName("특정 날짜에 발생한 주문인지 확인할 수 있다")

@@ -4,7 +4,7 @@ import christmas.domain.benefit.FreeGift;
 import christmas.domain.menu.MenuItem;
 import christmas.domain.order.Order;
 
-public class ChampagneGiveawayPolicy implements GiveawayPolicy {
+public class ChampagneFreeGiftPolicy implements FreeGiftPolicy {
     private static final MenuItem GIVEAWAY_MENU_ITEM = MenuItem.CHAMPAGNE;
     private static final Integer GIVEAWAY_APPLY_THRESHOLD_PRICE = 120000;
     private static final Integer EVENT_APPLY_THRESHOLD_PRICE = 10000;
@@ -23,7 +23,7 @@ public class ChampagneGiveawayPolicy implements GiveawayPolicy {
     }
 
     @Override
-    public FreeGift applyGiveaway(Order order) {
+    public FreeGift calculateApplicableFreeGift(Order order) {
         return FreeGift.of(GIVEAWAY_MENU_ITEM, GIVEAWAY_COUNT, DESCRIPTION);
     }
 

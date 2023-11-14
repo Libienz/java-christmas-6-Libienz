@@ -31,11 +31,11 @@ public class OutputView {
         System.out.println(outputMessageResolver.resolveOriginalPriceMessage(originalPrice));
     }
 
-    public void printGiveaway(FreeGiftsDto freeGifts) {
+    public void printFreeGifts(FreeGiftsDto freeGifts) {
         System.out.println(outputMessageResolver.resolveGiveawayMessage(freeGifts));
     }
 
-    public void printAppliedBenefitInformation(BenefitDetailsDto benefitDetailsDto) {
+    public void printBenefitDetails(BenefitDetailsDto benefitDetailsDto) {
         System.out.println(outputMessageResolver.resolveAppliedBenefitMessage(benefitDetailsDto));
     }
 

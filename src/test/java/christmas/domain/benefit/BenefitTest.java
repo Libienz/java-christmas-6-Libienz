@@ -2,12 +2,6 @@ package christmas.domain.benefit;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import christmas.domain.benefit.Benefit;
-import christmas.domain.benefit.DecemberEventBadge;
-import christmas.domain.benefit.DiscountDetail;
-import christmas.domain.benefit.DiscountDetails;
-import christmas.domain.benefit.FreeGift;
-import christmas.domain.benefit.FreeGifts;
 import christmas.domain.menu.MenuItem;
 import christmas.dto.BenefitDetailDto;
 import christmas.dto.BenefitDetailsDto;
@@ -43,7 +37,7 @@ class BenefitTest {
     @DisplayName("할인이 적용된 예상 결제 금액을 계산할 수 있다")
     @Test
     void testCalculateBenefitAppliedPrice() {
-        assertThat(testBenefit.calculateBenefitAppliedPrice(142000)).isEqualTo(135754);
+        assertThat(testBenefit.calculateDiscountedPrice(142000)).isEqualTo(135754);
     }
 
     @DisplayName("혜택 내역을 생성해낼 수 있다")

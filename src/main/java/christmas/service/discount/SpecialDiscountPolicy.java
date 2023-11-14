@@ -22,7 +22,7 @@ public class SpecialDiscountPolicy implements DiscountPolicy {
     }
 
     @Override
-    public DiscountDetail applyDiscount(Order order) {
+    public DiscountDetail calculateApplicableDiscount(Order order) {
         return DiscountDetail.of(DISCOUNT_DESCRIPTION, DISCOUNT_AMOUNT);
     }
 

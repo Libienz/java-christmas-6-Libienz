@@ -24,7 +24,7 @@ public class Benefit {
         return discountDetails.calculateDiscountedPrice() + freeGifts.calculateFreeGiftsPrice();
     }
 
-    public Integer calculateBenefitAppliedPrice(int originalPrice) {
+    public Integer calculateDiscountedPrice(int originalPrice) {
         return originalPrice - discountDetails.calculateDiscountedPrice();
     }
 

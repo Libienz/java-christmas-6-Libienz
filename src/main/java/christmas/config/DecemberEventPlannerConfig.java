@@ -8,9 +8,9 @@ import christmas.service.discount.DiscountService;
 import christmas.service.discount.SpecialDiscountPolicy;
 import christmas.service.discount.WeekDayDiscountPolicy;
 import christmas.service.discount.WeekendDiscountPolicy;
-import christmas.service.gift.ChampagneGiveawayPolicy;
-import christmas.service.gift.GiveawayPolicy;
-import christmas.service.gift.GiveawayService;
+import christmas.service.gift.ChampagneFreeGiftPolicy;
+import christmas.service.gift.FreeGiftPolicy;
+import christmas.service.gift.FreeGiftService;
 import christmas.view.InputFormatValidator;
 import christmas.view.InputMapper;
 import christmas.view.InputSplitter;
@@ -45,7 +45,7 @@ public class DecemberEventPlannerConfig {
         return new OutputMessageResolver();
     }
 
-    public List<DiscountPolicy> appliedDiscountPolicies() {
+    public List<DiscountPolicy> discountPolicies() {
         ChristmasDiscountPolicy christmasDiscountPolicy = new ChristmasDiscountPolicy();
         SpecialDiscountPolicy specialDiscountPolicy = new SpecialDiscountPolicy();
         WeekDayDiscountPolicy weekDayDiscountPolicy = new WeekDayDiscountPolicy();
@@ -55,25 +55,25 @@ public class DecemberEventPlannerConfig {
     }
 
     public DiscountService discountService() {
-        return new DiscountService(appliedDiscountPolicies());
+        return new DiscountService(discountPolicies());
     }
 
-    public List<GiveawayPolicy> appliedGiveawayPolicies() {
-        ChampagneGiveawayPolicy champagneGiveawayPolicy = new ChampagneGiveawayPolicy();
+    public List<FreeGiftPolicy> freeGiftPolicies() {
+        ChampagneFreeGiftPolicy champagneGiveawayPolicy = new ChampagneFreeGiftPolicy();
 
         return List.of(champagneGiveawayPolicy);
     }
 
-    public GiveawayService giveawayService() {
-        return new GiveawayService(appliedGiveawayPolicies());
+    public FreeGiftService freeGiftService() {
+        return new FreeGiftService(freeGiftPolicies());
     }
 
-    public BenefitCalculationService appliedBenefitCalculatorService() {
-        return new BenefitCalculationService(discountService(), giveawayService());
+    public BenefitCalculationService benefitCalculationService() {
+        return new BenefitCalculationService(discountService(), freeGiftService());
     }
 
     public DecemberEventPlannerController decemberEventPlannerController() {
-        return new DecemberEventPlannerController(inputView(), outputView(), appliedBenefitCalculatorService());
+        return new DecemberEventPlannerController(inputView(), outputView(), benefitCalculationService());
     }
 
 }

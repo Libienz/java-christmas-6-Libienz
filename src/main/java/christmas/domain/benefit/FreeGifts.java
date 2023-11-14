@@ -17,7 +17,7 @@ public class FreeGifts {
 
     public Integer calculateFreeGiftsPrice() {
         return freeGifts.stream()
-                .mapToInt(FreeGift::getDiscountAmount)
+                .mapToInt(FreeGift::calculateFreeGiftPrice)
                 .sum();
     }
 
@@ -29,7 +29,7 @@ public class FreeGifts {
 
     public List<BenefitDetailDto> toBenefitDetailDtos() {
         return freeGifts.stream()
-                .map(gift -> BenefitDetailDto.of(gift.getDescription(), gift.getDiscountAmount()))
+                .map(gift -> BenefitDetailDto.of(gift.getDescription(), gift.calculateFreeGiftPrice()))
                 .toList();
     }
 }

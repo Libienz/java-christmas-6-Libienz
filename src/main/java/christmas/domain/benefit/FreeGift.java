@@ -22,16 +22,8 @@ public class FreeGift {
         return description;
     }
 
-    public Integer getDiscountAmount() {
+    public Integer calculateFreeGiftPrice() {
         return count * giveaway.getPrice();
-    }
-
-    public MenuItem getGiveaway() {
-        return giveaway;
-    }
-
-    public Integer getCount() {
-        return count;
     }
 
     public FreeGiftDto toFreeGiftDto() {

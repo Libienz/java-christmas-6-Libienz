@@ -25,7 +25,7 @@ public class WeekendDiscountPolicy implements DiscountPolicy {
     }
 
     @Override
-    public DiscountDetail applyDiscount(Order order) {
+    public DiscountDetail calculateApplicableDiscount(Order order) {
         return DiscountDetail.of(DISCOUNT_DESCRIPTION, calculateDiscountAmount(order));
     }
 
@@ -34,7 +34,7 @@ public class WeekendDiscountPolicy implements DiscountPolicy {
     }
 
     private boolean isNotWeekendOrder(Order order) {
-        return !order.isOrderDateWeekend();
+        return !order.isWeekendOrder();
     }
 
     private boolean isNoOrderForDiscountedCategory(Order order) {

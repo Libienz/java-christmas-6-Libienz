@@ -16,13 +16,13 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 @DisplayName("증정 서비스 테스트")
-class GiveawayServiceTest {
-    private GiveawayService giveawayService;
+class FreeGiftServiceTest {
+    private FreeGiftService freeGiftService;
 
     @BeforeEach
     void setUp() {
-        List<GiveawayPolicy> giveawayPolicies = List.of(new ChampagneGiveawayPolicy());
-        giveawayService = new GiveawayService(giveawayPolicies);
+        List<FreeGiftPolicy> giveawayPolicies = List.of(new ChampagneFreeGiftPolicy());
+        freeGiftService = new FreeGiftService(giveawayPolicies);
     }
 
     @DisplayName("샴페인 증정 정책만을 만족할 경우 적용된 증정은 1개이다")
@@ -34,7 +34,7 @@ class GiveawayServiceTest {
         List<OrderItem> orderItems = List.of(item1, item2, item3);
 
         Order order = Order.of(OrderItems.from(orderItems), OrderDate.from(4));
-        FreeGifts giveawayResultsDto = giveawayService.applyGiveaway(order);
+        FreeGifts giveawayResultsDto = freeGiftService.applyGiveaway(order);
         FreeGiftsDto freeGifts = giveawayResultsDto.toFreeGiftsDto();
 
         assertThat(freeGifts.getFreeGiftDtos().size()).isEqualTo(1);
@@ -49,7 +49,7 @@ class GiveawayServiceTest {
         List<OrderItem> orderItems = List.of(item1, item2, item3);
 
         Order order = Order.of(OrderItems.from(orderItems), OrderDate.from(4));
-        FreeGifts giveawayResultsDto = giveawayService.applyGiveaway(order);
+        FreeGifts giveawayResultsDto = freeGiftService.applyGiveaway(order);
         List<FreeGiftDto> freeGifts = giveawayResultsDto.toFreeGiftsDto().getFreeGiftDtos();
 
         assertThat(freeGifts.get(0).getMenuName()).isEqualTo(MenuItem.CHAMPAGNE.getItemName());
@@ -64,7 +64,7 @@ class GiveawayServiceTest {
         List<OrderItem> orderItems = List.of(item1, item2, item3);
 
         Order order = Order.of(OrderItems.from(orderItems), OrderDate.from(4));
-        FreeGifts giveawayResultsDto = giveawayService.applyGiveaway(order);
+        FreeGifts giveawayResultsDto = freeGiftService.applyGiveaway(order);
         List<FreeGiftDto> freeGifts = giveawayResultsDto.toFreeGiftsDto().getFreeGiftDtos();
 
         assertThat(freeGifts.get(0).getCount()).isEqualTo(1);

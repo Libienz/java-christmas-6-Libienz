@@ -23,7 +23,7 @@ public class ChristmasDiscountPolicy implements DiscountPolicy {
     }
 
     @Override
-    public DiscountDetail applyDiscount(Order order) {
+    public DiscountDetail calculateApplicableDiscount(Order order) {
         return DiscountDetail.of(DISCOUNT_DESCRIPTION, calculateDiscountAmount(order));
     }
 
@@ -32,7 +32,7 @@ public class ChristmasDiscountPolicy implements DiscountPolicy {
     }
 
     private Integer calculateDiscountAmount(Order order) {
-        return DEFAULT_DISCOUNT_AMOUNT + order.calculateOrderDateOffset(EVENT_START_DAY) * DISCOUNT_INCREASE_PER_DAY;
+        return DEFAULT_DISCOUNT_AMOUNT + order.calculateDateOffset(EVENT_START_DAY) * DISCOUNT_INCREASE_PER_DAY;
     }
 
     private boolean isOutOfEventPeriodOrder(Order order) {

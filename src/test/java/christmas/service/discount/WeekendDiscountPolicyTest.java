@@ -33,7 +33,7 @@ class WeekendDiscountPolicyTest {
         List<OrderItem> orderItems = List.of(item1, item2, item3);
 
         Order order = Order.of(OrderItems.from(orderItems), OrderDate.from(3));
-        DiscountDetail discountDetail = weekendDiscountPolicy.applyDiscount(order);
+        DiscountDetail discountDetail = weekendDiscountPolicy.calculateApplicableDiscount(order);
 
         assertThat(discountDetail.getDiscountAmount()).isEqualTo(2023 * 3);
     }

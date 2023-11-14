@@ -19,7 +19,7 @@ public class Order {
         return orderDate.isInPeriod(startDay, endDay);
     }
 
-    public int calculateOrderDateOffset(int day) {
+    public int calculateDateOffset(int day) {
         return orderDate.calculateDayOffset(day);
     }
 
@@ -31,7 +31,7 @@ public class Order {
         return orderItems.countCategoryItem(menuCategory);
     }
 
-    public boolean isOrderDateWeekend() {
+    public boolean isWeekendOrder() {
         return orderDate.isWeekend();
     }
 

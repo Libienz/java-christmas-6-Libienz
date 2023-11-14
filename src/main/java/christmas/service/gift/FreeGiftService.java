@@ -5,17 +5,17 @@ import christmas.domain.benefit.FreeGifts;
 import christmas.domain.order.Order;
 import java.util.List;
 
-public class GiveawayService {
-    private final List<GiveawayPolicy> giveawayPolicies;
+public class FreeGiftService {
+    private final List<FreeGiftPolicy> giveawayPolicies;
 
-    public GiveawayService(List<GiveawayPolicy> giveawayPolicies) {
+    public FreeGiftService(List<FreeGiftPolicy> giveawayPolicies) {
         this.giveawayPolicies = giveawayPolicies;
     }
 
     public FreeGifts applyGiveaway(Order order) {
         List<FreeGift> freeGifts = giveawayPolicies.stream()
-                .filter(giveawayPolicy -> giveawayPolicy.supports(order))
-                .map(giveawayPolicy -> giveawayPolicy.applyGiveaway(order))
+                .filter(freeGiftPolicy -> freeGiftPolicy.supports(order))
+                .map(freeGiftPolicy -> freeGiftPolicy.calculateApplicableFreeGift(order))
                 .toList();
         return FreeGifts.from(freeGifts);
     }
