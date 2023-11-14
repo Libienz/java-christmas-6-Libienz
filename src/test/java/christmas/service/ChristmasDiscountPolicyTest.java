@@ -52,6 +52,16 @@ class ChristmasDiscountPolicyTest {
         assertThat(christmasDiscountPolicy.supports(order)).isTrue();
     }
 
+    @DisplayName("총 주문 금액이 10000원을 넘지 않으면 이벤트 적용이 되지 않는다")
+    @Test
+    void testEventApplyThresholdMoney() {
+        OrderItem item1 = OrderItem.of(MenuItem.MUSHROOM_SOUP, 1);
+        List<OrderItem> orderItems = List.of(item1);
+
+        Order order = Order.of(OrderItems.from(orderItems), OrderDate.from(5));
+        assertThat(christmasDiscountPolicy.supports(order)).isFalse();
+    }
+
     @DisplayName("할인이 지원되지 않는 경우 supports가 false를 반환한다")
     @ParameterizedTest
     @ValueSource(ints = {26, 27, 28, 31})

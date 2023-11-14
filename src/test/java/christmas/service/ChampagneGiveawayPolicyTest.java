@@ -44,6 +44,16 @@ class ChampagneGiveawayPolicyTest {
         assertThat(champagneGiveawayPolicy.supports(order)).isFalse();
     }
 
+    @DisplayName("총 주문 금액이 10000원을 넘지 않으면 이벤트 적용이 되지 않는다")
+    @Test
+    void testEventApplyThresholdMoney() {
+        OrderItem item1 = OrderItem.of(MenuItem.MUSHROOM_SOUP, 1);
+        List<OrderItem> orderItems = List.of(item1);
+
+        Order order = Order.of(OrderItems.from(orderItems), OrderDate.from(5));
+        assertThat(champagneGiveawayPolicy.supports(order)).isFalse();
+    }
+
     @DisplayName("증정하는 물품은 샴페인이다")
     @Test
     void testGiveawayMenu() {

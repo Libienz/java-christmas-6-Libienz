@@ -38,6 +38,16 @@ class SpecialDiscountPolicyTest {
         assertThat(discountResultDto.getDiscountAmount()).isEqualTo(1000);
     }
 
+    @DisplayName("총 주문 금액이 10000원을 넘지 않으면 이벤트 적용이 되지 않는다")
+    @Test
+    void testEventApplyThresholdMoney() {
+        OrderItem item1 = OrderItem.of(MenuItem.MUSHROOM_SOUP, 1);
+        List<OrderItem> orderItems = List.of(item1);
+
+        Order order = Order.of(OrderItems.from(orderItems), OrderDate.from(5));
+        assertThat(specialDiscountPolicy.supports(order)).isFalse();
+    }
+
     @DisplayName("3일 ,10일, 17일, 24일, 25일, 31일에는 특별 할인이 적용된다")
     @ParameterizedTest
     @ValueSource(ints = {3, 10, 17, 24, 25, 31})

@@ -52,6 +52,16 @@ class WeekDayDiscountPolicyTest {
         assertThat(weekDayDiscountPolicy.supports(order)).isTrue();
     }
 
+    @DisplayName("총 주문 금액이 10000원을 넘지 않으면 이벤트 적용이 되지 않는다")
+    @Test
+    void testEventApplyThresholdMoney() {
+        OrderItem item1 = OrderItem.of(MenuItem.MUSHROOM_SOUP, 1);
+        List<OrderItem> orderItems = List.of(item1);
+
+        Order order = Order.of(OrderItems.from(orderItems), OrderDate.from(5));
+        assertThat(weekDayDiscountPolicy.supports(order)).isFalse();
+    }
+
     @DisplayName("금요일 토요일에는 평일 할인이 적용되지 않는다")
     @ParameterizedTest
     @ValueSource(ints = {8, 9})
