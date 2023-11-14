@@ -1,25 +1,25 @@
 package christmas.controller;
 
 import christmas.domain.DecemberEventBadge;
+import christmas.domain.FreeGifts;
 import christmas.domain.Order;
 import christmas.domain.OrderDate;
 import christmas.domain.OrderItems;
 import christmas.dto.BenefitDetailsDto;
-import christmas.domain.FreeGifts;
-import christmas.service.AppliedBenefitCalculatorService;
+import christmas.service.BenefitCalculationService;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 
 public class DecemberEventPlannerController {
     private final InputView inputView;
     private final OutputView outputView;
-    private final AppliedBenefitCalculatorService appliedBenefitCalculatorService;
+    private final BenefitCalculationService benefitCalculationService;
 
     public DecemberEventPlannerController(InputView inputView, OutputView outputView,
-                                          AppliedBenefitCalculatorService appliedBenefitCalculatorService) {
+                                          BenefitCalculationService benefitCalculationService) {
         this.inputView = inputView;
         this.outputView = outputView;
-        this.appliedBenefitCalculatorService = appliedBenefitCalculatorService;
+        this.benefitCalculationService = benefitCalculationService;
     }
 
     public void run() {
@@ -34,16 +34,16 @@ public class DecemberEventPlannerController {
 
         Order order = Order.of(orderItems, orderDate);
 
-        FreeGifts freeGifts = appliedBenefitCalculatorService.calculateGiveaway(order);
+        FreeGifts freeGifts = benefitCalculationService.calculateGiveaway(order);
         outputView.printGiveaway(freeGifts);
 
-        BenefitDetailsDto benefitDetailsDto = appliedBenefitCalculatorService.calculateBenefitDetails(order);
+        BenefitDetailsDto benefitDetailsDto = benefitCalculationService.calculateBenefitDetails(order);
         outputView.printAppliedBenefitInformation(benefitDetailsDto);
 
-        Integer totalBenefitAmount = appliedBenefitCalculatorService.calculateTotalBenefitAmount(benefitDetailsDto);
+        Integer totalBenefitAmount = benefitCalculationService.calculateTotalBenefitAmount(benefitDetailsDto);
         outputView.printBenefitAmount(totalBenefitAmount);
 
-        Integer benefitAppliedPrice = appliedBenefitCalculatorService.calculateBenefitAppliedPrice(order);
+        Integer benefitAppliedPrice = benefitCalculationService.calculateBenefitAppliedPrice(order);
         outputView.printDiscountedPrice(benefitAppliedPrice);
 
         outputView.printEventBadge(DecemberEventBadge.from(totalBenefitAmount));

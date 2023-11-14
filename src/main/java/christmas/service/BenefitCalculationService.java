@@ -1,20 +1,20 @@
 package christmas.service;
 
 import christmas.domain.DecemberEventBadge;
-import christmas.domain.Order;
-import christmas.dto.BenefitDetailDto;
-import christmas.dto.BenefitDetailsDto;
 import christmas.domain.DiscountDetail;
 import christmas.domain.DiscountDetails;
 import christmas.domain.FreeGifts;
+import christmas.domain.Order;
+import christmas.dto.BenefitDetailDto;
+import christmas.dto.BenefitDetailsDto;
 import java.util.List;
 
-public class AppliedBenefitCalculatorService {
+public class BenefitCalculationService {
 
     private final DiscountService discountService;
     private final GiveawayService giveawayService;
 
-    public AppliedBenefitCalculatorService(DiscountService discountService, GiveawayService giveawayService) {
+    public BenefitCalculationService(DiscountService discountService, GiveawayService giveawayService) {
         this.discountService = discountService;
         this.giveawayService = giveawayService;
     }

@@ -1,7 +1,7 @@
 package christmas.config;
 
 import christmas.controller.DecemberEventPlannerController;
-import christmas.service.AppliedBenefitCalculatorService;
+import christmas.service.BenefitCalculationService;
 import christmas.service.ChampagneGiveawayPolicy;
 import christmas.service.ChristmasDiscountPolicy;
 import christmas.service.DiscountPolicy;
@@ -68,8 +68,8 @@ public class DecemberEventPlannerConfig {
         return new GiveawayService(appliedGiveawayPolicies());
     }
 
-    public AppliedBenefitCalculatorService appliedBenefitCalculatorService() {
-        return new AppliedBenefitCalculatorService(discountService(), giveawayService());
+    public BenefitCalculationService appliedBenefitCalculatorService() {
+        return new BenefitCalculationService(discountService(), giveawayService());
     }
 
     public DecemberEventPlannerController decemberEventPlannerController() {
