@@ -1,5 +1,6 @@
 package christmas.service;
 
+import christmas.domain.Benefit;
 import christmas.domain.DecemberEventBadge;
 import christmas.domain.DiscountDetail;
 import christmas.domain.DiscountDetails;
@@ -18,6 +19,11 @@ public class BenefitCalculationService {
         this.giveawayService = giveawayService;
     }
 
+    public Benefit calculateBenefit(Order order) {
+        DiscountDetails discountDetails = discountService.applyDiscount(order);
+        FreeGifts freeGifts = giveawayService.applyGiveaway(order);
+        return Benefit.of(discountDetails, freeGifts);
+    }
 
     public BenefitDetailsDto calculateBenefitDetails(Order order) {
         DiscountDetails discountDetail = discountService.applyDiscount(order);
