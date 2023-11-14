@@ -39,6 +39,6 @@ public class DecemberEventPlannerController {
         outputView.printBenefitAmount(benefitAmount);
         outputView.printDiscountedPrice(benefit.calculateDiscountedPrice(order.calculatePrice()));
 
-        outputView.printEventBadge(benefit.calculateAchievableBadge(benefitAmount));
+        outputView.printEventBadge(benefit.calculateAchievableBadge(benefitAmount).toEventBadgeDto());
     }
 }

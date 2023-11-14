@@ -1,8 +1,8 @@
 package christmas.view;
 
-import christmas.domain.benefit.DecemberEventBadge;
 import christmas.dto.BenefitDetailDto;
 import christmas.dto.BenefitDetailsDto;
+import christmas.dto.EventBadgeDto;
 import christmas.dto.FreeGiftDto;
 import christmas.dto.FreeGiftsDto;
 import christmas.dto.OrderDateDto;
@@ -68,8 +68,8 @@ public class OutputMessageResolver {
         return DISCOUNTED_PRICE_MESSAGE_PREFIX + formatCurrency(price);
     }
 
-    public String resolveEventBadgeMessage(DecemberEventBadge decemberEventBadge) {
-        return EVENT_BADGE_MESSAGE_PREFIX + decemberEventBadge.getItemName();
+    public String resolveEventBadgeMessage(EventBadgeDto eventBadgeDto) {
+        return EVENT_BADGE_MESSAGE_PREFIX + eventBadgeDto.getBadgeName();
     }
 
     private String formatCurrency(int amount) {

@@ -1,5 +1,6 @@
 package christmas.domain.benefit;
 
+import christmas.dto.EventBadgeDto;
 import java.util.Arrays;
 import java.util.function.Function;
 
@@ -22,6 +23,10 @@ public enum DecemberEventBadge {
                 .filter(decemberEventBadge -> decemberEventBadge.isConditionMatch(benefitAmount))
                 .findFirst()
                 .orElse(NONE);
+    }
+
+    public EventBadgeDto toEventBadgeDto() {
+        return new EventBadgeDto(getItemName());
     }
 
     public String getItemName() {

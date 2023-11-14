@@ -1,7 +1,7 @@
 package christmas.view;
 
-import christmas.domain.benefit.DecemberEventBadge;
 import christmas.dto.BenefitDetailsDto;
+import christmas.dto.EventBadgeDto;
 import christmas.dto.FreeGiftsDto;
 import christmas.dto.OrderDateDto;
 import christmas.dto.OrderItemsDto;
@@ -47,8 +47,8 @@ public class OutputView {
         System.out.println(outputMessageResolver.resolveDiscountedPriceMessage(discountedPrice));
     }
 
-    public void printEventBadge(DecemberEventBadge decemberEventBadge) {
-        System.out.println(outputMessageResolver.resolveEventBadgeMessage(decemberEventBadge));
+    public void printEventBadge(EventBadgeDto eventBadgeDto) {
+        System.out.println(outputMessageResolver.resolveEventBadgeMessage(eventBadgeDto));
     }
 
 }

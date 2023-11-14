@@ -12,6 +12,7 @@ import christmas.domain.menu.MenuItem;
 import christmas.domain.order.OrderDate;
 import christmas.domain.order.OrderItem;
 import christmas.domain.order.OrderItems;
+import christmas.dto.EventBadgeDto;
 import christmas.dto.OrderItemsDto;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
@@ -109,7 +110,8 @@ class OutputMessageResolverTest {
     @DisplayName("12월 이벤트 배지 메시지를 규칙에 맞게 생성한다")
     @Test
     void testEventBadgeMessageResolve() {
-        String message = outputMessageResolver.resolveEventBadgeMessage(DecemberEventBadge.SANTA);
+        String message = outputMessageResolver.resolveEventBadgeMessage(
+                EventBadgeDto.from(DecemberEventBadge.SANTA.getItemName()));
         assertThat(message.trim()).isEqualTo(("<12월 이벤트 배지>" + LINE_SEPARATOR + "산타").trim());
     }
 }
