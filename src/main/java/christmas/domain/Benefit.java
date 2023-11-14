@@ -1,6 +1,7 @@
 package christmas.domain;
 
 import christmas.dto.BenefitDetailsDto;
+import christmas.dto.FreeGiftsDto;
 
 public class Benefit {
     private final DiscountDetails discountDetails;
@@ -23,4 +24,15 @@ public class Benefit {
         return discountDetails.calculateDiscountedPrice() + freeGifts.calculateFreeGiftsPrice();
     }
 
+    public Integer calculateBenefitAppliedPrice(int originalPrice) {
+        return originalPrice - discountDetails.calculateDiscountedPrice();
+    }
+
+    public FreeGiftsDto toFreeGiftsDto() {
+        return freeGifts.toFreeGiftsDto();
+    }
+
+    public DecemberEventBadge calculateAchievableBadge(int benefitAmount) {
+        return DecemberEventBadge.from(benefitAmount);
+    }
 }
