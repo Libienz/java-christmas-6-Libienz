@@ -6,9 +6,9 @@ import christmas.dto.BenefitDetailsDto;
 import christmas.dto.FreeGiftDto;
 import christmas.dto.FreeGiftsDto;
 import christmas.dto.OrderDateDto;
+import christmas.dto.OrderItemDto;
 import christmas.dto.OrderItemsDto;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 public class OutputMessageResolver {
@@ -28,9 +28,9 @@ public class OutputMessageResolver {
     }
 
     public String resolveOrderItemsMessage(OrderItemsDto orderItemsDto) {
-        Map<String, Integer> orderItems = orderItemsDto.getOrderItems();
-        return ORDER_ITEMS_MESSAGE_PREFIX + orderItems.entrySet().stream()
-                .map(entry -> entry.getKey() + " " + entry.getValue() + "개")
+        List<OrderItemDto> orderItems = orderItemsDto.getOrderItemDtos();
+        return ORDER_ITEMS_MESSAGE_PREFIX + orderItems.stream()
+                .map(orderItemDto -> orderItemDto.getMenuName() + " " + orderItemDto.getOrderCount() + "개")
                 .collect(Collectors.joining(LINE_SEPARATOR));
     }
 

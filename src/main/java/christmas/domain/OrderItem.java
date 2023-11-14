@@ -1,5 +1,7 @@
 package christmas.domain;
 
+import christmas.dto.OrderItemDto;
+
 public class OrderItem {
     private static final Integer MIN_ORDER_COUNT = 1;
     private static final Integer MAX_ORDER_COUNT = 20;
@@ -23,6 +25,10 @@ public class OrderItem {
             return orderCount;
         }
         return 0;
+    }
+
+    public OrderItemDto toOrderItemDto() {
+        return OrderItemDto.of(menuItem.getItemName(), orderCount);
     }
 
     public String getMenuName() {

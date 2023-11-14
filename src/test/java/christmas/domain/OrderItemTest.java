@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatNoException;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import christmas.dto.OrderItemDto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -46,5 +47,12 @@ class OrderItemTest {
     void testIsNotBeverageOrder() {
         OrderItem orderItem = OrderItem.of(MenuItem.BARBECUE_RIBS, 3);
         assertThat(orderItem.isBeverageOrder()).isFalse();
+    }
+
+    @DisplayName("주문 상품 DTO로 변환할 수 있다")
+    @Test
+    void testCreateOrderItemDto() {
+        OrderItemDto orderItem = OrderItem.of(MenuItem.BARBECUE_RIBS, 3).toOrderItemDto();
+        assertThat(orderItem.getMenuName()).isEqualTo("바비큐립");
     }
 }

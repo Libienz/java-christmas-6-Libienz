@@ -1,19 +1,19 @@
 package christmas.dto;
 
-import java.util.Map;
+import java.util.List;
 
 public class OrderItemsDto {
-    private final Map<String, Integer> orderItems;
+    private final List<OrderItemDto> orderItemDtos;
 
-    private OrderItemsDto(Map<String, Integer> orderItems) {
-        this.orderItems = orderItems;
+    private OrderItemsDto(List<OrderItemDto> orderItemDtos) {
+        this.orderItemDtos = orderItemDtos;
     }
 
-    public static OrderItemsDto from(Map<String, Integer> orderItems) {
-        return new OrderItemsDto(orderItems);
+    public static OrderItemsDto from(List<OrderItemDto> orderItemDtos) {
+        return new OrderItemsDto(orderItemDtos);
     }
 
-    public Map<String, Integer> getOrderItems() {
-        return orderItems;
+    public List<OrderItemDto> getOrderItemDtos() {
+        return orderItemDtos;
     }
 }
