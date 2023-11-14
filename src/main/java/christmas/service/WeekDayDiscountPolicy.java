@@ -1,8 +1,8 @@
 package christmas.service;
 
+import christmas.domain.DiscountDetail;
 import christmas.domain.MenuCategory;
 import christmas.domain.Order;
-import christmas.domain.DiscountDetails;
 
 public class WeekDayDiscountPolicy implements DiscountPolicy {
     private static final MenuCategory DISCOUNT_MENU_CATEGORY = MenuCategory.DESSERT;
@@ -25,8 +25,8 @@ public class WeekDayDiscountPolicy implements DiscountPolicy {
     }
 
     @Override
-    public DiscountDetails applyDiscount(Order order) {
-        return DiscountDetails.of(DISCOUNT_DESCRIPTION, calculateDiscountAmount(order));
+    public DiscountDetail applyDiscount(Order order) {
+        return DiscountDetail.of(DISCOUNT_DESCRIPTION, calculateDiscountAmount(order));
     }
 
     private boolean isInsufficientOrderAmountForEvent(Order order) {

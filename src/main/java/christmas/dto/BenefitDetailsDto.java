@@ -1,6 +1,6 @@
 package christmas.dto;
 
-import christmas.domain.DiscountDetail;
+import christmas.domain.DiscountDetails;
 import christmas.domain.FreeGifts;
 import java.util.List;
 import java.util.stream.Stream;
@@ -16,15 +16,15 @@ public class BenefitDetailsDto {
         return new BenefitDetailsDto(benefitDetailDtos);
     }
 
-    public static BenefitDetailsDto of(DiscountDetail discountDetail, FreeGifts freeGifts) {
-        List<BenefitDetailDto> combinedBenefits = combineToBenefitDetails(discountDetail, freeGifts);
+    public static BenefitDetailsDto of(DiscountDetails discountDetails, FreeGifts freeGifts) {
+        List<BenefitDetailDto> combinedBenefits = combineToBenefitDetails(discountDetails, freeGifts);
         return BenefitDetailsDto.from(combinedBenefits);
     }
 
-    private static List<BenefitDetailDto> combineToBenefitDetails(DiscountDetail discountDetail,
+    private static List<BenefitDetailDto> combineToBenefitDetails(DiscountDetails discountDetails,
                                                                   FreeGifts freeGifts) {
         return Stream.concat(
-                discountDetail.getDiscountResultDtos().stream()
+                discountDetails.getDiscountResultDtos().stream()
                         .map(result -> BenefitDetailDto.of(result.getDiscountDescription(),
                                 result.getDiscountAmount())),
                 freeGifts.getGiveawayResultDtos().stream()

@@ -2,12 +2,12 @@ package christmas.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import christmas.domain.DiscountDetail;
 import christmas.domain.MenuItem;
 import christmas.domain.Order;
 import christmas.domain.OrderDate;
 import christmas.domain.OrderItem;
 import christmas.domain.OrderItems;
-import christmas.domain.DiscountDetails;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -33,9 +33,9 @@ class WeekDayDiscountPolicyTest {
         List<OrderItem> orderItems = List.of(item1, item2, item3);
 
         Order order = Order.of(OrderItems.from(orderItems), OrderDate.from(4));
-        DiscountDetails discountDetails = weekDayDiscountPolicy.applyDiscount(order);
+        DiscountDetail discountDetail = weekDayDiscountPolicy.applyDiscount(order);
 
-        assertThat(discountDetails.getDiscountAmount()).isEqualTo(2023 * 3);
+        assertThat(discountDetail.getDiscountAmount()).isEqualTo(2023 * 3);
     }
 
     @DisplayName("일 ,월, 화, 수, 목에는 평일 할인이 적용된다")

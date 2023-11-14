@@ -2,13 +2,13 @@ package christmas.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import christmas.domain.DiscountDetail;
+import christmas.domain.DiscountDetails;
 import christmas.domain.MenuItem;
 import christmas.domain.Order;
 import christmas.domain.OrderDate;
 import christmas.domain.OrderItem;
 import christmas.domain.OrderItems;
-import christmas.domain.DiscountDetail;
-import christmas.domain.DiscountDetails;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -34,8 +34,8 @@ class DiscountServiceTest {
         List<OrderItem> orderItems = List.of(item1, item2, item3);
 
         Order order = Order.of(OrderItems.from(orderItems), OrderDate.from(27));
-        DiscountDetail discountDetail = discountService.applyDiscount(order);
-        List<DiscountDetails> discountDetails = discountDetail.getDiscountResultDtos();
+        DiscountDetails discountDetail = discountService.applyDiscount(order);
+        List<DiscountDetail> discountDetails = discountDetail.getDiscountResultDtos();
 
         assertThat(discountDetails.size()).isEqualTo(0);
     }
@@ -49,8 +49,8 @@ class DiscountServiceTest {
         List<OrderItem> orderItems = List.of(item1, item2, item3);
 
         Order order = Order.of(OrderItems.from(orderItems), OrderDate.from(4));
-        DiscountDetail discountDetail = discountService.applyDiscount(order);
-        List<DiscountDetails> discountDetails = discountDetail.getDiscountResultDtos();
+        DiscountDetails discountDetail = discountService.applyDiscount(order);
+        List<DiscountDetail> discountDetails = discountDetail.getDiscountResultDtos();
 
         assertThat(discountDetails.size()).isEqualTo(2);
     }
@@ -64,11 +64,11 @@ class DiscountServiceTest {
         List<OrderItem> orderItems = List.of(item1, item2, item3);
 
         Order order = Order.of(OrderItems.from(orderItems), OrderDate.from(4));
-        DiscountDetail discountDetail = discountService.applyDiscount(order);
-        List<DiscountDetails> discountDetails = discountDetail.getDiscountResultDtos();
+        DiscountDetails discountDetail = discountService.applyDiscount(order);
+        List<DiscountDetail> discountDetails = discountDetail.getDiscountResultDtos();
 
         assertThat(discountDetails)
-                .extracting(DiscountDetails::getDiscountDescription)
+                .extracting(DiscountDetail::getDiscountDescription)
                 .contains("평일 할인", "크리스마스 디데이 할인");
     }
 
@@ -81,11 +81,11 @@ class DiscountServiceTest {
         List<OrderItem> orderItems = List.of(item1, item2, item3);
 
         Order order = Order.of(OrderItems.from(orderItems), OrderDate.from(4));
-        DiscountDetail discountDetail = discountService.applyDiscount(order);
-        List<DiscountDetails> discountDetails = discountDetail.getDiscountResultDtos();
+        DiscountDetails discountDetail = discountService.applyDiscount(order);
+        List<DiscountDetail> discountDetails = discountDetail.getDiscountResultDtos();
 
         assertThat(discountDetails)
-                .extracting(DiscountDetails::getDiscountAmount)
+                .extracting(DiscountDetail::getDiscountAmount)
                 .contains(2023 * 3, 1300);
     }
 }

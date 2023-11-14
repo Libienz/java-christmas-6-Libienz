@@ -1,7 +1,7 @@
 package christmas.service;
 
+import christmas.domain.DiscountDetail;
 import christmas.domain.Order;
-import christmas.domain.DiscountDetails;
 
 public class ChristmasDiscountPolicy implements DiscountPolicy {
     private static final Integer EVENT_START_DAY = 1;
@@ -23,8 +23,8 @@ public class ChristmasDiscountPolicy implements DiscountPolicy {
     }
 
     @Override
-    public DiscountDetails applyDiscount(Order order) {
-        return DiscountDetails.of(DISCOUNT_DESCRIPTION, calculateDiscountAmount(order));
+    public DiscountDetail applyDiscount(Order order) {
+        return DiscountDetail.of(DISCOUNT_DESCRIPTION, calculateDiscountAmount(order));
     }
 
     private boolean isInsufficientOrderAmountForEvent(Order order) {

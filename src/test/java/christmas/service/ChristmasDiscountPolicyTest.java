@@ -2,12 +2,12 @@ package christmas.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import christmas.domain.DiscountDetail;
 import christmas.domain.MenuItem;
 import christmas.domain.Order;
 import christmas.domain.OrderDate;
 import christmas.domain.OrderItem;
 import christmas.domain.OrderItems;
-import christmas.domain.DiscountDetails;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -33,9 +33,9 @@ class ChristmasDiscountPolicyTest {
         List<OrderItem> orderItems = List.of(item1, item2, item3);
 
         Order order = Order.of(OrderItems.from(orderItems), OrderDate.from(3));
-        DiscountDetails discountDetails = christmasDiscountPolicy.applyDiscount(order);
+        DiscountDetail discountDetail = christmasDiscountPolicy.applyDiscount(order);
 
-        assertThat(discountDetails.getDiscountAmount()).isEqualTo(1200);
+        assertThat(discountDetail.getDiscountAmount()).isEqualTo(1200);
     }
 
     @DisplayName("크리스마스 할인이 적용 가능한지 날짜로 판별할 수 있다")

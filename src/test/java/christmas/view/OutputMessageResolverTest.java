@@ -3,15 +3,15 @@ package christmas.view;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import christmas.domain.DecemberEventBadge;
+import christmas.domain.DiscountDetail;
+import christmas.domain.DiscountDetails;
+import christmas.domain.FreeGift;
+import christmas.domain.FreeGifts;
 import christmas.domain.MenuItem;
 import christmas.domain.OrderDate;
 import christmas.domain.OrderItem;
 import christmas.domain.OrderItems;
 import christmas.dto.BenefitDetailsDto;
-import christmas.domain.DiscountDetail;
-import christmas.domain.DiscountDetails;
-import christmas.domain.FreeGift;
-import christmas.domain.FreeGifts;
 import christmas.dto.OrderItemsDto;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
@@ -68,16 +68,16 @@ class OutputMessageResolverTest {
     @DisplayName("혜택 내역 메시지를 규칙에 맞게 생성한다")
     @Test
     void testBenefitAppliedMessageResolve() {
-        DiscountDetails discount1 = DiscountDetails.of("크리스마스 디데이 할인", 1200);
-        DiscountDetails discount2 = DiscountDetails.of("평일 할인", 4046);
-        DiscountDetails discount3 = DiscountDetails.of("특별 할인", 1000);
+        DiscountDetail discount1 = DiscountDetail.of("크리스마스 디데이 할인", 1200);
+        DiscountDetail discount2 = DiscountDetail.of("평일 할인", 4046);
+        DiscountDetail discount3 = DiscountDetail.of("특별 할인", 1000);
         FreeGift freeGift = FreeGift.of(MenuItem.CHAMPAGNE, 1, "증정 이벤트");
 
-        DiscountDetail discountDetail = DiscountDetail.from(List.of(discount1, discount2, discount3));
+        DiscountDetails discountDetails = DiscountDetails.from(List.of(discount1, discount2, discount3));
         FreeGifts freeGifts = FreeGifts.from(List.of(freeGift));
 
         String message = outputMessageResolver.resolveAppliedBenefitMessage(
-                BenefitDetailsDto.of(discountDetail, freeGifts));
+                BenefitDetailsDto.of(discountDetails, freeGifts));
         assertThat(message.trim()).isEqualTo(
                 "<혜택 내역>\n크리스마스 디데이 할인: -1,200원\n평일 할인: -4,046원\n특별 할인: -1,000원\n증정 이벤트: -25,000원".trim());
     }

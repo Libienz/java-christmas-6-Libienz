@@ -1,20 +1,23 @@
 package christmas.domain;
 
-import java.util.List;
-
 public class DiscountDetail {
+    private final String discountDescription;
+    private final Integer discountAmount;
 
-    private final List<DiscountDetails> discountDetails;
-
-    private DiscountDetail(List<DiscountDetails> discountDetails) {
-        this.discountDetails = discountDetails;
+    private DiscountDetail(String discountDescription, Integer discountAmount) {
+        this.discountDescription = discountDescription;
+        this.discountAmount = discountAmount;
     }
 
-    public static DiscountDetail from(List<DiscountDetails> discountDetails) {
-        return new DiscountDetail(discountDetails);
+    public static DiscountDetail of(String discountDescription, Integer discountAmount) {
+        return new DiscountDetail(discountDescription, discountAmount);
     }
 
-    public List<DiscountDetails> getDiscountResultDtos() {
-        return discountDetails;
+    public String getDiscountDescription() {
+        return discountDescription;
+    }
+
+    public Integer getDiscountAmount() {
+        return discountAmount;
     }
 }

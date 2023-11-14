@@ -10,7 +10,6 @@ import christmas.dto.BenefitDetailsDto;
 import java.util.List;
 
 public class BenefitCalculationService {
-
     private final DiscountService discountService;
     private final GiveawayService giveawayService;
 
@@ -19,8 +18,9 @@ public class BenefitCalculationService {
         this.giveawayService = giveawayService;
     }
 
+
     public BenefitDetailsDto calculateBenefitDetails(Order order) {
-        DiscountDetail discountDetail = discountService.applyDiscount(order);
+        DiscountDetails discountDetail = discountService.applyDiscount(order);
         FreeGifts freeGifts = giveawayService.applyGiveaway(order);
         return BenefitDetailsDto.of(discountDetail, freeGifts);
     }
@@ -34,10 +34,10 @@ public class BenefitCalculationService {
 
     public Integer calculateBenefitAppliedPrice(Order order) {
         int originalPrice = order.calculatePrice();
-        DiscountDetail discountDetail = discountService.applyDiscount(order);
-        List<DiscountDetails> discountDetails = discountDetail.getDiscountResultDtos();
+        DiscountDetails discountDetail = discountService.applyDiscount(order);
+        List<DiscountDetail> discountDetails = discountDetail.getDiscountResultDtos();
         int discountedPrice = discountDetail.getDiscountResultDtos().stream()
-                .mapToInt(DiscountDetails::getDiscountAmount)
+                .mapToInt(DiscountDetail::getDiscountAmount)
                 .sum();
 
         return originalPrice - discountedPrice;

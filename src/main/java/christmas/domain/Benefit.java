@@ -4,7 +4,7 @@ public class Benefit {
     private final DiscountDetails discountDetails;
     private final FreeGifts freeGifts;
 
-    private Benefit(DiscountDetails discountDetails, FreeGifts freeGifts) {
+    public Benefit(DiscountDetails discountDetails, FreeGifts freeGifts) {
         this.discountDetails = discountDetails;
         this.freeGifts = freeGifts;
     }
