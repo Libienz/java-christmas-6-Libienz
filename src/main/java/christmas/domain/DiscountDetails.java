@@ -14,6 +14,12 @@ public class DiscountDetails {
         return new DiscountDetails(discountDetails);
     }
 
+    public Integer calculateDiscountedPrice() {
+        return discountDetails.stream()
+                .mapToInt(DiscountDetail::getDiscountAmount)
+                .sum();
+    }
+
     public List<DiscountDetail> getDiscountResultDtos() {
         return discountDetails;
     }

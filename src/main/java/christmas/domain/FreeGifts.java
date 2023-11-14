@@ -13,6 +13,12 @@ public class FreeGifts {
         return new FreeGifts(freeGifts);
     }
 
+    public Integer calculateFreeGiftsPrice() {
+        return freeGifts.stream()
+                .mapToInt(FreeGift::getDiscountAmount)
+                .sum();
+    }
+
     public List<FreeGift> getGiveawayResultDtos() {
         return freeGifts;
     }
