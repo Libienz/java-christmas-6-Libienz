@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatNoException;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import christmas.dto.OrderDateDto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -62,5 +63,19 @@ class OrderDateTest {
     void testDetermineWeekDay(int day) {
         OrderDate orderDate = OrderDate.from(day);
         assertThat(orderDate.isWeekend()).isFalse();
+    }
+
+    @DisplayName("주문 날짜 DTO로 변환 가능하다")
+    @Test
+    void testCreateOrderDateDto() {
+        OrderDateDto orderDateDto = OrderDate.from(31).toOrderDateDto();
+        assertThat(orderDateDto.getDayOfMonth()).isEqualTo(31);
+    }
+
+    @DisplayName("특정 날짜와 같은지 비교할 수 있다")
+    @Test
+    void testSameDateEvaluation() {
+        OrderDate orderDate = OrderDate.from(31);
+        assertThat(orderDate.isSameDate(31)).isTrue();
     }
 }
