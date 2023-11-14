@@ -13,6 +13,9 @@ public class ChristmasDiscountPolicy implements DiscountPolicy {
 
     @Override
     public Boolean supports(Order order) {
+        if (order.calculatePrice() < 10000) {
+            return false;
+        }
         return order.isOrderDateInPeriod(EVENT_START_DAY, EVENT_END_DAY);
     }
 

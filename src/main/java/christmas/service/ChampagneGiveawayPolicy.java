@@ -12,6 +12,9 @@ public class ChampagneGiveawayPolicy implements GiveawayPolicy {
 
     @Override
     public Boolean supports(Order order) {
+        if (order.calculatePrice() < 10000) {
+            return false;
+        }
         return order.calculatePrice() >= THRESHOLD_AMOUNT;
     }
 

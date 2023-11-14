@@ -11,6 +11,9 @@ public class WeekDayDiscountPolicy implements DiscountPolicy {
 
     @Override
     public Boolean supports(Order order) {
+        if (order.calculatePrice() < 10000) {
+            return false;
+        }
         return !order.isOrderDateWeekend() && order.countCategoryItem(DISCOUNT_MENU_CATEGORY) != 0;
     }
 

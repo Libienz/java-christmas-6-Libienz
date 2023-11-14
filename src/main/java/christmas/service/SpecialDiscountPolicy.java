@@ -11,6 +11,9 @@ public class SpecialDiscountPolicy implements DiscountPolicy {
 
     @Override
     public Boolean supports(Order order) {
+        if (order.calculatePrice() < 10000) {
+            return false;
+        }
         return STARRED_DAYS.stream().anyMatch(order::isOrderDateSame);
     }
 
