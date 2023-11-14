@@ -1,6 +1,7 @@
 package christmas.domain.order;
 
 import christmas.dto.OrderDateDto;
+import christmas.exception.date.OrderDateRangeException;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 
@@ -9,7 +10,6 @@ public class OrderDate {
     private static final Integer MONTH = 12;
     private static final Integer START_DAY_OF_DECEMBER = 1;
     private static final Integer END_DAY_OF_DECEMBER = 31;
-    private static final String INVALID_RANGE_MESSAGE = "[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.";
 
     private final Integer dayOfMonth;
 
@@ -49,7 +49,7 @@ public class OrderDate {
 
     private void validateRange(Integer dayOfMonth) {
         if (dayOfMonth < START_DAY_OF_DECEMBER || dayOfMonth > END_DAY_OF_DECEMBER) {
-            throw new IllegalArgumentException(INVALID_RANGE_MESSAGE);
+            throw new OrderDateRangeException();
         }
     }
 }

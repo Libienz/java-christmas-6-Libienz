@@ -2,10 +2,11 @@ package christmas.domain.order;
 
 import christmas.domain.menu.MenuCategory;
 import christmas.dto.OrderItemsDto;
+import christmas.exception.orders.BeverageOnlyOrderException;
+import christmas.exception.orders.DuplicateOrderItemException;
 import java.util.List;
 
 public class OrderItems {
-    private static final String INVALID_ORDER = "[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.";
     private final List<OrderItem> orderItems;
 
     private OrderItems(List<OrderItem> orderItems) {
@@ -42,13 +43,13 @@ public class OrderItems {
 
     private void validateDuplicateOrderItem(List<OrderItem> orderItems) {
         if (hasDuplicateItem(orderItems)) {
-            throw new IllegalArgumentException(INVALID_ORDER);
+            throw new DuplicateOrderItemException();
         }
     }
 
     private void validateBeverageOnly(List<OrderItem> orderItems) {
         if (orderItems.stream().allMatch(OrderItem::isBeverageOrder)) {
-            throw new IllegalArgumentException(INVALID_ORDER);
+            throw new BeverageOnlyOrderException();
         }
     }
 

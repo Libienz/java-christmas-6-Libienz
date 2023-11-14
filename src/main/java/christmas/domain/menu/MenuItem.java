@@ -1,5 +1,6 @@
 package christmas.domain.menu;
 
+import christmas.exception.orders.NoSuchMenuItemException;
 import java.util.Arrays;
 
 public enum MenuItem {
@@ -23,8 +24,6 @@ public enum MenuItem {
     RED_WINE("레드와인", 60_000, MenuCategory.BEVERAGE),
     CHAMPAGNE("샴페인", 25_000, MenuCategory.BEVERAGE);
 
-    private static final String INVALID_ORDER = "[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.";
-
     private final String itemName;
     private final int price;
     private final MenuCategory category;
@@ -39,7 +38,7 @@ public enum MenuItem {
         return Arrays.stream(MenuItem.values())
                 .filter(item -> item.itemName.equals(itemName))
                 .findAny()
-                .orElseThrow(() -> new IllegalArgumentException(INVALID_ORDER));
+                .orElseThrow(NoSuchMenuItemException::new);
     }
 
     public String getItemName() {
