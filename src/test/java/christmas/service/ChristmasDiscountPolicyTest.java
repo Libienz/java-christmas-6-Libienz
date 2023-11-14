@@ -7,7 +7,7 @@ import christmas.domain.Order;
 import christmas.domain.OrderDate;
 import christmas.domain.OrderItem;
 import christmas.domain.OrderItems;
-import christmas.dto.DiscountResultDto;
+import christmas.dto.DiscountDetails;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -33,9 +33,9 @@ class ChristmasDiscountPolicyTest {
         List<OrderItem> orderItems = List.of(item1, item2, item3);
 
         Order order = Order.of(OrderItems.from(orderItems), OrderDate.from(3));
-        DiscountResultDto discountResultDto = christmasDiscountPolicy.applyDiscount(order);
+        DiscountDetails discountDetails = christmasDiscountPolicy.applyDiscount(order);
 
-        assertThat(discountResultDto.getDiscountAmount()).isEqualTo(1200);
+        assertThat(discountDetails.getDiscountAmount()).isEqualTo(1200);
     }
 
     @DisplayName("크리스마스 할인이 적용 가능한지 날짜로 판별할 수 있다")

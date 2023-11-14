@@ -7,7 +7,7 @@ import christmas.domain.Order;
 import christmas.domain.OrderDate;
 import christmas.domain.OrderItem;
 import christmas.domain.OrderItems;
-import christmas.dto.DiscountResultDto;
+import christmas.dto.DiscountDetails;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -33,9 +33,9 @@ class SpecialDiscountPolicyTest {
         List<OrderItem> orderItems = List.of(item1, item2, item3);
 
         Order order = Order.of(OrderItems.from(orderItems), OrderDate.from(3));
-        DiscountResultDto discountResultDto = specialDiscountPolicy.applyDiscount(order);
+        DiscountDetails discountDetails = specialDiscountPolicy.applyDiscount(order);
 
-        assertThat(discountResultDto.getDiscountAmount()).isEqualTo(1000);
+        assertThat(discountDetails.getDiscountAmount()).isEqualTo(1000);
     }
 
     @DisplayName("총 주문 금액이 10000원을 넘지 않으면 이벤트 적용이 되지 않는다")

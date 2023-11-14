@@ -7,7 +7,7 @@ import christmas.domain.Order;
 import christmas.domain.OrderDate;
 import christmas.domain.OrderItem;
 import christmas.domain.OrderItems;
-import christmas.dto.DiscountResultDto;
+import christmas.dto.DiscountDetails;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -33,9 +33,9 @@ class WeekDayDiscountPolicyTest {
         List<OrderItem> orderItems = List.of(item1, item2, item3);
 
         Order order = Order.of(OrderItems.from(orderItems), OrderDate.from(4));
-        DiscountResultDto discountResultDto = weekDayDiscountPolicy.applyDiscount(order);
+        DiscountDetails discountDetails = weekDayDiscountPolicy.applyDiscount(order);
 
-        assertThat(discountResultDto.getDiscountAmount()).isEqualTo(2023 * 3);
+        assertThat(discountDetails.getDiscountAmount()).isEqualTo(2023 * 3);
     }
 
     @DisplayName("일 ,월, 화, 수, 목에는 평일 할인이 적용된다")

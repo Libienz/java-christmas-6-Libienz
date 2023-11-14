@@ -14,15 +14,15 @@ public class BenefitDetailsDto {
         return new BenefitDetailsDto(benefitDetailDtos);
     }
 
-    public static BenefitDetailsDto of(DiscountResultsDto discountResultsDto, GiveawayResultsDto giveawayResultsDto) {
-        List<BenefitDetailDto> combinedBenefits = combineToBenefitDetails(discountResultsDto, giveawayResultsDto);
+    public static BenefitDetailsDto of(DiscountDetail discountDetail, GiveawayResultsDto giveawayResultsDto) {
+        List<BenefitDetailDto> combinedBenefits = combineToBenefitDetails(discountDetail, giveawayResultsDto);
         return BenefitDetailsDto.from(combinedBenefits);
     }
 
-    private static List<BenefitDetailDto> combineToBenefitDetails(DiscountResultsDto discountResultsDto,
+    private static List<BenefitDetailDto> combineToBenefitDetails(DiscountDetail discountDetail,
                                                                   GiveawayResultsDto giveawayResultsDto) {
         return Stream.concat(
-                discountResultsDto.getDiscountResultDtos().stream()
+                discountDetail.getDiscountResultDtos().stream()
                         .map(result -> BenefitDetailDto.of(result.getDiscountDescription(),
                                 result.getDiscountAmount())),
                 giveawayResultsDto.getGiveawayResultDtos().stream()

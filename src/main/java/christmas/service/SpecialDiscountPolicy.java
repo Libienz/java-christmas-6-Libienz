@@ -1,7 +1,7 @@
 package christmas.service;
 
 import christmas.domain.Order;
-import christmas.dto.DiscountResultDto;
+import christmas.dto.DiscountDetails;
 import java.util.List;
 
 public class SpecialDiscountPolicy implements DiscountPolicy {
@@ -22,8 +22,8 @@ public class SpecialDiscountPolicy implements DiscountPolicy {
     }
 
     @Override
-    public DiscountResultDto applyDiscount(Order order) {
-        return DiscountResultDto.of(DISCOUNT_DESCRIPTION, DISCOUNT_AMOUNT);
+    public DiscountDetails applyDiscount(Order order) {
+        return DiscountDetails.of(DISCOUNT_DESCRIPTION, DISCOUNT_AMOUNT);
     }
 
     private boolean isInsufficientOrderAmountForEvent(Order order) {

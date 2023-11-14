@@ -8,8 +8,8 @@ import christmas.domain.OrderDate;
 import christmas.domain.OrderItem;
 import christmas.domain.OrderItems;
 import christmas.dto.BenefitDetailsDto;
-import christmas.dto.DiscountResultDto;
-import christmas.dto.DiscountResultsDto;
+import christmas.dto.DiscountDetail;
+import christmas.dto.DiscountDetails;
 import christmas.dto.GiveawayResultDto;
 import christmas.dto.GiveawayResultsDto;
 import christmas.dto.OrderItemsDto;
@@ -68,16 +68,16 @@ class OutputMessageResolverTest {
     @DisplayName("혜택 내역 메시지를 규칙에 맞게 생성한다")
     @Test
     void testBenefitAppliedMessageResolve() {
-        DiscountResultDto discount1 = DiscountResultDto.of("크리스마스 디데이 할인", 1200);
-        DiscountResultDto discount2 = DiscountResultDto.of("평일 할인", 4046);
-        DiscountResultDto discount3 = DiscountResultDto.of("특별 할인", 1000);
+        DiscountDetails discount1 = DiscountDetails.of("크리스마스 디데이 할인", 1200);
+        DiscountDetails discount2 = DiscountDetails.of("평일 할인", 4046);
+        DiscountDetails discount3 = DiscountDetails.of("특별 할인", 1000);
         GiveawayResultDto giveawayResultDto = GiveawayResultDto.of(MenuItem.CHAMPAGNE, 1, "증정 이벤트");
 
-        DiscountResultsDto discountResultsDto = DiscountResultsDto.from(List.of(discount1, discount2, discount3));
+        DiscountDetail discountDetail = DiscountDetail.from(List.of(discount1, discount2, discount3));
         GiveawayResultsDto giveawayResultsDto = GiveawayResultsDto.from(List.of(giveawayResultDto));
 
         String message = outputMessageResolver.resolveAppliedBenefitMessage(
-                BenefitDetailsDto.of(discountResultsDto, giveawayResultsDto));
+                BenefitDetailsDto.of(discountDetail, giveawayResultsDto));
         assertThat(message.trim()).isEqualTo(
                 "<혜택 내역>\n크리스마스 디데이 할인: -1,200원\n평일 할인: -4,046원\n특별 할인: -1,000원\n증정 이벤트: -25,000원".trim());
     }

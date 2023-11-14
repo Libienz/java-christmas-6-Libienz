@@ -1,8 +1,8 @@
 package christmas.service;
 
 import christmas.domain.Order;
-import christmas.dto.DiscountResultDto;
-import christmas.dto.DiscountResultsDto;
+import christmas.dto.DiscountDetail;
+import christmas.dto.DiscountDetails;
 import java.util.List;
 
 public class DiscountService {
@@ -12,12 +12,12 @@ public class DiscountService {
         this.discountPolicies = discountPolicies;
     }
 
-    public DiscountResultsDto applyDiscount(Order order) {
-        List<DiscountResultDto> discountResultDtos = discountPolicies.stream()
+    public DiscountDetail applyDiscount(Order order) {
+        List<DiscountDetails> discountDetails = discountPolicies.stream()
                 .filter(discountPolicy -> discountPolicy.supports(order))
                 .map(discountPolicy -> discountPolicy.applyDiscount(order))
                 .toList();
 
-        return DiscountResultsDto.from(discountResultDtos);
+        return DiscountDetail.from(discountDetails);
     }
 }
