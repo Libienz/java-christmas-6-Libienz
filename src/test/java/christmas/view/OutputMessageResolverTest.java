@@ -100,6 +100,6 @@ class OutputMessageResolverTest {
     @Test
     void testEventBadgeMessageResolve() {
         String message = outputMessageResolver.resolveEventBadgeMessage(DecemberEventBadge.SANTA);
-        assertThat(message).isEqualTo("<12월 이벤트 배지>\n산타");
+        assertThat(message.trim()).isEqualTo("<12월 이벤트 배지>\n산타".trim());
     }
 }

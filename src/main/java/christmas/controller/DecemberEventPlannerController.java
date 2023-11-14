@@ -28,6 +28,7 @@ public class DecemberEventPlannerController {
         OrderDate orderDate = inputView.readDate();
         OrderItems orderItems = inputView.readOrder();
 
+        outputView.printEventResultPreview(orderDate.toOrderDateDto());
         outputView.printOrderItems(orderItems.toOrderItemsDto());
         outputView.printOriginalPrice(orderItems.calculateTotalPrice());
 
