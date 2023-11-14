@@ -2,9 +2,7 @@ package christmas.domain.benefit;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import christmas.domain.benefit.DiscountDetail;
-import christmas.domain.benefit.DiscountDetails;
-import christmas.dto.BenefitDetailDto;
+import christmas.dto.benefit.BenefitDetailDto;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

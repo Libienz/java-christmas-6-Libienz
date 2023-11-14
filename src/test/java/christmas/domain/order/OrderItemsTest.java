@@ -6,10 +6,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import christmas.domain.menu.MenuCategory;
 import christmas.domain.menu.MenuItem;
-import christmas.domain.order.OrderItem;
-import christmas.domain.order.OrderItems;
-import christmas.dto.OrderItemDto;
-import christmas.dto.OrderItemsDto;
+import christmas.dto.order.OrderItemDto;
+import christmas.dto.order.OrderItemsDto;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

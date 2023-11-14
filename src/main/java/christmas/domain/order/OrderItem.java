@@ -2,7 +2,7 @@ package christmas.domain.order;
 
 import christmas.domain.menu.MenuCategory;
 import christmas.domain.menu.MenuItem;
-import christmas.dto.OrderItemDto;
+import christmas.dto.order.OrderItemDto;
 import christmas.exception.orders.OrderCountRangeException;
 
 public class OrderItem {

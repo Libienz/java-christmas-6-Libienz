@@ -1,4 +1,4 @@
-package christmas.dto;
+package christmas.dto.order;
 
 public class OrderDateDto {
     private Integer dayOfMonth;

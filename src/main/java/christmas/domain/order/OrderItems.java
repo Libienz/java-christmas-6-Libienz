@@ -1,7 +1,7 @@
 package christmas.domain.order;
 
 import christmas.domain.menu.MenuCategory;
-import christmas.dto.OrderItemsDto;
+import christmas.dto.order.OrderItemsDto;
 import christmas.exception.orders.BeverageOnlyOrderException;
 import christmas.exception.orders.DuplicateOrderItemException;
 import java.util.List;

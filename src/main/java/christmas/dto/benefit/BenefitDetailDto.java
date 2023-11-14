@@ -1,4 +1,4 @@
-package christmas.dto;
+package christmas.dto.benefit;
 
 public class BenefitDetailDto {
     private final String description;

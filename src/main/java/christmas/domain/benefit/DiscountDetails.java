@@ -1,6 +1,6 @@
 package christmas.domain.benefit;
 
-import christmas.dto.BenefitDetailDto;
+import christmas.dto.benefit.BenefitDetailDto;
 import java.util.List;
 
 public class DiscountDetails {

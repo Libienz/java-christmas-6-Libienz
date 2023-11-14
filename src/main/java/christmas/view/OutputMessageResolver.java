@@ -1,13 +1,13 @@
 package christmas.view;
 
-import christmas.dto.BenefitDetailDto;
-import christmas.dto.BenefitDetailsDto;
-import christmas.dto.EventBadgeDto;
-import christmas.dto.FreeGiftDto;
-import christmas.dto.FreeGiftsDto;
-import christmas.dto.OrderDateDto;
-import christmas.dto.OrderItemDto;
-import christmas.dto.OrderItemsDto;
+import christmas.dto.benefit.BenefitDetailDto;
+import christmas.dto.benefit.BenefitDetailsDto;
+import christmas.dto.benefit.EventBadgeDto;
+import christmas.dto.benefit.FreeGiftDto;
+import christmas.dto.benefit.FreeGiftsDto;
+import christmas.dto.order.OrderDateDto;
+import christmas.dto.order.OrderItemDto;
+import christmas.dto.order.OrderItemsDto;
 import java.util.stream.Collectors;
 
 public class OutputMessageResolver {

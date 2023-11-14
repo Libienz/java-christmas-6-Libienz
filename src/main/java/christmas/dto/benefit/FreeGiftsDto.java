@@ -1,4 +1,4 @@
-package christmas.dto;
+package christmas.dto.benefit;
 
 import java.util.List;
 

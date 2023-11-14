@@ -8,7 +8,7 @@ import christmas.domain.order.Order;
 import christmas.domain.order.OrderDate;
 import christmas.domain.order.OrderItem;
 import christmas.domain.order.OrderItems;
-import christmas.dto.BenefitDetailDto;
+import christmas.dto.benefit.BenefitDetailDto;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

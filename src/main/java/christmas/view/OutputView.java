@@ -1,10 +1,10 @@
 package christmas.view;
 
-import christmas.dto.BenefitDetailsDto;
-import christmas.dto.EventBadgeDto;
-import christmas.dto.FreeGiftsDto;
-import christmas.dto.OrderDateDto;
-import christmas.dto.OrderItemsDto;
+import christmas.dto.benefit.BenefitDetailsDto;
+import christmas.dto.benefit.EventBadgeDto;
+import christmas.dto.benefit.FreeGiftsDto;
+import christmas.dto.order.OrderDateDto;
+import christmas.dto.order.OrderItemsDto;
 
 public class OutputView {
     private static final String GREETING_MESSAGE = "안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.";

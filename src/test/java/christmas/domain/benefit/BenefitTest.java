@@ -3,10 +3,10 @@ package christmas.domain.benefit;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import christmas.domain.menu.MenuItem;
-import christmas.dto.BenefitDetailDto;
-import christmas.dto.BenefitDetailsDto;
-import christmas.dto.FreeGiftDto;
-import christmas.dto.FreeGiftsDto;
+import christmas.dto.benefit.BenefitDetailDto;
+import christmas.dto.benefit.BenefitDetailsDto;
+import christmas.dto.benefit.FreeGiftDto;
+import christmas.dto.benefit.FreeGiftsDto;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

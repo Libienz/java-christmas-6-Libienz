@@ -1,6 +1,6 @@
 package christmas.domain.benefit;
 
-import christmas.dto.EventBadgeDto;
+import christmas.dto.benefit.EventBadgeDto;
 import java.util.Arrays;
 import java.util.function.Function;
 

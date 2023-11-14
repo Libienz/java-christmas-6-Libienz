@@ -1,4 +1,4 @@
-package christmas.dto;
+package christmas.dto.benefit;
 
 public class EventBadgeDto {
     private final String badgeName;

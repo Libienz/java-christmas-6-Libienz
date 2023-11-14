@@ -1,6 +1,6 @@
 package christmas.domain.order;
 
-import christmas.dto.OrderDateDto;
+import christmas.dto.order.OrderDateDto;
 import christmas.exception.date.OrderDateRangeException;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
