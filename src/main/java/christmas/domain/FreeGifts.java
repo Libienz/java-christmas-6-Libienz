@@ -1,5 +1,6 @@
 package christmas.domain;
 
+import christmas.dto.FreeGiftsDto;
 import java.util.List;
 
 public class FreeGifts {
@@ -17,6 +18,12 @@ public class FreeGifts {
         return freeGifts.stream()
                 .mapToInt(FreeGift::getDiscountAmount)
                 .sum();
+    }
+
+    public FreeGiftsDto toFreeGiftsDto() {
+        return FreeGiftsDto.of(freeGifts.stream()
+                .map(FreeGift::toFreeGiftDto)
+                .toList());
     }
 
     public List<FreeGift> getGiveawayResultDtos() {

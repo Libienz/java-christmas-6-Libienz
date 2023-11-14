@@ -1,5 +1,7 @@
 package christmas.domain;
 
+import christmas.dto.FreeGiftDto;
+
 public class FreeGift {
     private final MenuItem giveaway;
     private final Integer count;
@@ -29,5 +31,9 @@ public class FreeGift {
 
     public Integer getCount() {
         return count;
+    }
+
+    public FreeGiftDto toFreeGiftDto() {
+        return FreeGiftDto.of(giveaway.getItemName(), count);
     }
 }
