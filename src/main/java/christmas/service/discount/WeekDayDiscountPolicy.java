@@ -1,12 +1,12 @@
-package christmas.service;
+package christmas.service.discount;
 
 import christmas.domain.DiscountDetail;
 import christmas.domain.MenuCategory;
 import christmas.domain.Order;
 
-public class WeekendDiscountPolicy implements DiscountPolicy {
-    private static final MenuCategory DISCOUNT_MENU_CATEGORY = MenuCategory.MAIN;
-    private static final String DISCOUNT_DESCRIPTION = "주말 할인";
+public class WeekDayDiscountPolicy implements DiscountPolicy {
+    private static final MenuCategory DISCOUNT_MENU_CATEGORY = MenuCategory.DESSERT;
+    private static final String DISCOUNT_DESCRIPTION = "평일 할인";
     private static final Integer EVENT_APPLY_THRESHOLD_PRICE = 10000;
     private static final Integer DISCOUNT_AMOUNT_PER_ITEM = 2023;
 
@@ -15,7 +15,7 @@ public class WeekendDiscountPolicy implements DiscountPolicy {
         if (isInsufficientOrderAmountForEvent(order)) {
             return false;
         }
-        if (isNotWeekendOrder(order)) {
+        if (isNotWeekDayOrder(order)) {
             return false;
         }
         if (isNoOrderForDiscountedCategory(order)) {
@@ -33,8 +33,8 @@ public class WeekendDiscountPolicy implements DiscountPolicy {
         return order.calculatePrice() < EVENT_APPLY_THRESHOLD_PRICE;
     }
 
-    private boolean isNotWeekendOrder(Order order) {
-        return !order.isOrderDateWeekend();
+    private boolean isNotWeekDayOrder(Order order) {
+        return order.isOrderDateWeekend();
     }
 
     private boolean isNoOrderForDiscountedCategory(Order order) {

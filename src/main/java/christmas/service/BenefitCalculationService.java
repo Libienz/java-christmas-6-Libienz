@@ -4,6 +4,8 @@ import christmas.domain.Benefit;
 import christmas.domain.DiscountDetails;
 import christmas.domain.FreeGifts;
 import christmas.domain.Order;
+import christmas.service.discount.DiscountService;
+import christmas.service.gift.GiveawayService;
 
 public class BenefitCalculationService {
     private final DiscountService discountService;

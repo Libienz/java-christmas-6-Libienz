@@ -1,4 +1,4 @@
-package christmas.service;
+package christmas.service.discount;
 
 import christmas.domain.DiscountDetail;
 import christmas.domain.DiscountDetails;

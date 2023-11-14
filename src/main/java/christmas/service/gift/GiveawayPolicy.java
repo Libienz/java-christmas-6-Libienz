@@ -1,7 +1,7 @@
-package christmas.service;
+package christmas.service.gift;
 
-import christmas.domain.Order;
 import christmas.domain.FreeGift;
+import christmas.domain.Order;
 
 public interface GiveawayPolicy {
     Boolean supports(Order order);
