@@ -1,9 +1,11 @@
 package christmas.domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatNoException;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -23,5 +25,26 @@ class OrderItemTest {
     @ValueSource(ints = {1, 2, 20})
     void testValidRangeOrderCountOrder(int orderCount) {
         assertThatNoException().isThrownBy(() -> OrderItem.of(MenuItem.BARBECUE_RIBS, orderCount));
+    }
+
+    @DisplayName("특정 카테고리 상품의 주문 개수가 몇개인지 계산할 수 있다")
+    @Test
+    void testCountCategoryItems() {
+        OrderItem orderItem = OrderItem.of(MenuItem.CHAMPAGNE, 3);
+        assertThat(orderItem.countCategoryItem(MenuCategory.BEVERAGE)).isEqualTo(3);
+    }
+
+    @DisplayName("음료 주문인 경우를 알아낼 수 있다")
+    @Test
+    void testIsBeverageOrder() {
+        OrderItem orderItem = OrderItem.of(MenuItem.CHAMPAGNE, 3);
+        assertThat(orderItem.isBeverageOrder()).isTrue();
+    }
+
+    @DisplayName("음료 주문이 아닌 경우를 알아낼 수 있다")
+    @Test
+    void testIsNotBeverageOrder() {
+        OrderItem orderItem = OrderItem.of(MenuItem.BARBECUE_RIBS, 3);
+        assertThat(orderItem.isBeverageOrder()).isFalse();
     }
 }
