@@ -3,6 +3,8 @@ package christmas.view;
 import camp.nextstep.edu.missionutils.Console;
 import christmas.domain.OrderDate;
 import christmas.domain.OrderItems;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 public class InputView {
     private static final String REQUEST_DATE_MESSAGE = "12월 중 식당 예상 방문 날짜는 언제인가요? (숫자만 입력해 주세요!)";
@@ -15,12 +17,22 @@ public class InputView {
     }
 
     public OrderDate readDate() {
-        System.out.println(REQUEST_DATE_MESSAGE);
-        return inputMapper.mapToOrderDate(Console.readLine());
+        return requestUntilCorrectFormArrive(REQUEST_DATE_MESSAGE, Console::readLine, inputMapper::mapToOrderDate);
     }
 
     public OrderItems readOrder() {
-        System.out.println(REQUEST_ORDER_MESSAGE);
-        return inputMapper.mapToOrderItems(Console.readLine());
+        return requestUntilCorrectFormArrive(REQUEST_ORDER_MESSAGE, Console::readLine, inputMapper::mapToOrderItems);
+    }
+
+    private <T> T requestUntilCorrectFormArrive(String requestMessage, Supplier<String> inputSupplier,
+                                                Function<String, T> mapper) {
+        while (true) {
+            try {
+                System.out.println(requestMessage);
+                return mapper.apply(inputSupplier.get().trim());
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 }
