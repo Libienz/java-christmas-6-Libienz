@@ -1,9 +1,9 @@
 package christmas.service;
 
-import christmas.domain.Benefit;
-import christmas.domain.DiscountDetails;
-import christmas.domain.FreeGifts;
-import christmas.domain.Order;
+import christmas.domain.benefit.Benefit;
+import christmas.domain.benefit.DiscountDetails;
+import christmas.domain.benefit.FreeGifts;
+import christmas.domain.order.Order;
 import christmas.service.discount.DiscountService;
 import christmas.service.gift.GiveawayService;
 

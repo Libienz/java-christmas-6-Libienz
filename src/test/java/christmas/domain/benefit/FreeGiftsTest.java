@@ -1,7 +1,10 @@
-package christmas.domain;
+package christmas.domain.benefit;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import christmas.domain.benefit.FreeGift;
+import christmas.domain.benefit.FreeGifts;
+import christmas.domain.menu.MenuItem;
 import christmas.dto.BenefitDetailDto;
 import christmas.dto.FreeGiftDto;
 import java.util.List;

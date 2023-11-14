@@ -2,15 +2,15 @@ package christmas.view;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import christmas.domain.DecemberEventBadge;
-import christmas.domain.DiscountDetail;
-import christmas.domain.DiscountDetails;
-import christmas.domain.FreeGift;
-import christmas.domain.FreeGifts;
-import christmas.domain.MenuItem;
-import christmas.domain.OrderDate;
-import christmas.domain.OrderItem;
-import christmas.domain.OrderItems;
+import christmas.domain.benefit.DecemberEventBadge;
+import christmas.domain.benefit.DiscountDetail;
+import christmas.domain.benefit.DiscountDetails;
+import christmas.domain.benefit.FreeGift;
+import christmas.domain.benefit.FreeGifts;
+import christmas.domain.menu.MenuItem;
+import christmas.domain.order.OrderDate;
+import christmas.domain.order.OrderItem;
+import christmas.domain.order.OrderItems;
 import christmas.dto.BenefitDetailsDto;
 import christmas.dto.OrderItemsDto;
 import java.util.List;

@@ -1,5 +1,6 @@
-package christmas.domain;
+package christmas.domain.order;
 
+import christmas.domain.menu.MenuCategory;
 import christmas.dto.OrderItemsDto;
 import java.util.List;
 

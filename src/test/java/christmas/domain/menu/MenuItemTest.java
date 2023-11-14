@@ -1,7 +1,8 @@
-package christmas.domain;
+package christmas.domain.menu;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import christmas.domain.menu.MenuItem;
 import java.util.Arrays;
 import java.util.Collection;
 import org.junit.jupiter.api.DisplayName;

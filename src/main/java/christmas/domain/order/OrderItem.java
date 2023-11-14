@@ -1,5 +1,7 @@
-package christmas.domain;
+package christmas.domain.order;
 
+import christmas.domain.menu.MenuCategory;
+import christmas.domain.menu.MenuItem;
 import christmas.dto.OrderItemDto;
 
 public class OrderItem {
@@ -34,7 +36,7 @@ public class OrderItem {
     public String getMenuName() {
         return menuItem.getItemName();
     }
-    
+
     public boolean isBeverageOrder() {
         return menuItem.getCategory() == MenuCategory.BEVERAGE;
     }

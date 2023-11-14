@@ -1,9 +1,9 @@
 package christmas.controller;
 
-import christmas.domain.Benefit;
-import christmas.domain.Order;
-import christmas.domain.OrderDate;
-import christmas.domain.OrderItems;
+import christmas.domain.benefit.Benefit;
+import christmas.domain.order.Order;
+import christmas.domain.order.OrderDate;
+import christmas.domain.order.OrderItems;
 import christmas.service.BenefitCalculationService;
 import christmas.view.InputView;
 import christmas.view.OutputView;

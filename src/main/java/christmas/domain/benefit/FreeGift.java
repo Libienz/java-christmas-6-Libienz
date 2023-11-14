@@ -1,5 +1,6 @@
-package christmas.domain;
+package christmas.domain.benefit;
 
+import christmas.domain.menu.MenuItem;
 import christmas.dto.FreeGiftDto;
 
 public class FreeGift {

@@ -1,8 +1,8 @@
 package christmas.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import christmas.domain.OrderDate;
-import christmas.domain.OrderItems;
+import christmas.domain.order.OrderDate;
+import christmas.domain.order.OrderItems;
 import java.util.function.Function;
 import java.util.function.Supplier;
 

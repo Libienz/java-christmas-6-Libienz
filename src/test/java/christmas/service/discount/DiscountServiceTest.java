@@ -2,12 +2,12 @@ package christmas.service.discount;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import christmas.domain.DiscountDetails;
-import christmas.domain.MenuItem;
-import christmas.domain.Order;
-import christmas.domain.OrderDate;
-import christmas.domain.OrderItem;
-import christmas.domain.OrderItems;
+import christmas.domain.benefit.DiscountDetails;
+import christmas.domain.menu.MenuItem;
+import christmas.domain.order.Order;
+import christmas.domain.order.OrderDate;
+import christmas.domain.order.OrderItem;
+import christmas.domain.order.OrderItems;
 import christmas.dto.BenefitDetailDto;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;

@@ -1,6 +1,6 @@
 package christmas.view;
 
-import christmas.domain.DecemberEventBadge;
+import christmas.domain.benefit.DecemberEventBadge;
 import christmas.dto.BenefitDetailsDto;
 import christmas.dto.FreeGiftsDto;
 import christmas.dto.OrderDateDto;

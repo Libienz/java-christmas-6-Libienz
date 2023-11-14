@@ -1,8 +1,8 @@
 package christmas.service.gift;
 
-import christmas.domain.FreeGift;
-import christmas.domain.MenuItem;
-import christmas.domain.Order;
+import christmas.domain.benefit.FreeGift;
+import christmas.domain.menu.MenuItem;
+import christmas.domain.order.Order;
 
 public class ChampagneGiveawayPolicy implements GiveawayPolicy {
     private static final MenuItem GIVEAWAY_MENU_ITEM = MenuItem.CHAMPAGNE;

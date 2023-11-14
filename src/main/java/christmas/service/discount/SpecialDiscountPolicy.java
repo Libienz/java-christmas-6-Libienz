@@ -1,7 +1,7 @@
 package christmas.service.discount;
 
-import christmas.domain.DiscountDetail;
-import christmas.domain.Order;
+import christmas.domain.benefit.DiscountDetail;
+import christmas.domain.order.Order;
 import java.util.List;
 
 public class SpecialDiscountPolicy implements DiscountPolicy {

@@ -1,7 +1,7 @@
 package christmas.service.discount;
 
-import christmas.domain.DiscountDetail;
-import christmas.domain.Order;
+import christmas.domain.benefit.DiscountDetail;
+import christmas.domain.order.Order;
 
 public class ChristmasDiscountPolicy implements DiscountPolicy {
     private static final Integer EVENT_START_DAY = 1;

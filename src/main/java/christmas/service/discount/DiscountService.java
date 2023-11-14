@@ -1,8 +1,8 @@
 package christmas.service.discount;
 
-import christmas.domain.DiscountDetail;
-import christmas.domain.DiscountDetails;
-import christmas.domain.Order;
+import christmas.domain.benefit.DiscountDetail;
+import christmas.domain.benefit.DiscountDetails;
+import christmas.domain.order.Order;
 import java.util.List;
 
 public class DiscountService {

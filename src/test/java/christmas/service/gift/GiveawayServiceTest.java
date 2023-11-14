@@ -2,12 +2,12 @@ package christmas.service.gift;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import christmas.domain.FreeGifts;
-import christmas.domain.MenuItem;
-import christmas.domain.Order;
-import christmas.domain.OrderDate;
-import christmas.domain.OrderItem;
-import christmas.domain.OrderItems;
+import christmas.domain.benefit.FreeGifts;
+import christmas.domain.menu.MenuItem;
+import christmas.domain.order.Order;
+import christmas.domain.order.OrderDate;
+import christmas.domain.order.OrderItem;
+import christmas.domain.order.OrderItems;
 import christmas.dto.FreeGiftDto;
 import christmas.dto.FreeGiftsDto;
 import java.util.List;

@@ -1,9 +1,13 @@
-package christmas.domain;
+package christmas.domain.order;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatNoException;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import christmas.domain.menu.MenuCategory;
+import christmas.domain.menu.MenuItem;
+import christmas.domain.order.OrderItem;
+import christmas.domain.order.OrderItems;
 import christmas.dto.OrderItemDto;
 import christmas.dto.OrderItemsDto;
 import java.util.List;

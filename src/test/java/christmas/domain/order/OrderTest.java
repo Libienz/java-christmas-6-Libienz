@@ -1,7 +1,13 @@
-package christmas.domain;
+package christmas.domain.order;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import christmas.domain.menu.MenuCategory;
+import christmas.domain.menu.MenuItem;
+import christmas.domain.order.Order;
+import christmas.domain.order.OrderDate;
+import christmas.domain.order.OrderItem;
+import christmas.domain.order.OrderItems;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

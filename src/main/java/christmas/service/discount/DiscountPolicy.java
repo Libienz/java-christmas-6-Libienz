@@ -1,7 +1,7 @@
 package christmas.service.discount;
 
-import christmas.domain.DiscountDetail;
-import christmas.domain.Order;
+import christmas.domain.benefit.DiscountDetail;
+import christmas.domain.order.Order;
 
 public interface DiscountPolicy {
     Boolean supports(Order order);

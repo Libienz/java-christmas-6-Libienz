@@ -1,4 +1,4 @@
-package christmas.domain;
+package christmas.domain.benefit;
 
 public class DiscountDetail {
     private final String discountDescription;

@@ -1,9 +1,9 @@
 package christmas.view;
 
-import christmas.domain.MenuItem;
-import christmas.domain.OrderDate;
-import christmas.domain.OrderItem;
-import christmas.domain.OrderItems;
+import christmas.domain.menu.MenuItem;
+import christmas.domain.order.OrderDate;
+import christmas.domain.order.OrderItem;
+import christmas.domain.order.OrderItems;
 import java.util.List;
 
 public class InputMapper {

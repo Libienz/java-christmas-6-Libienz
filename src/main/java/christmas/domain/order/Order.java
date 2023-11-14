@@ -1,4 +1,6 @@
-package christmas.domain;
+package christmas.domain.order;
+
+import christmas.domain.menu.MenuCategory;
 
 public class Order {
     private final OrderItems orderItems;
