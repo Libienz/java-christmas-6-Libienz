@@ -2,7 +2,7 @@ package christmas.service;
 
 import christmas.domain.MenuCategory;
 import christmas.domain.Order;
-import christmas.dto.DiscountDetails;
+import christmas.domain.DiscountDetails;
 
 public class WeekendDiscountPolicy implements DiscountPolicy {
     private static final MenuCategory DISCOUNT_MENU_CATEGORY = MenuCategory.MAIN;

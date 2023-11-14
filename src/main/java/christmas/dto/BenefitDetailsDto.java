@@ -1,5 +1,7 @@
 package christmas.dto;
 
+import christmas.domain.DiscountDetail;
+import christmas.domain.FreeGifts;
 import java.util.List;
 import java.util.stream.Stream;
 

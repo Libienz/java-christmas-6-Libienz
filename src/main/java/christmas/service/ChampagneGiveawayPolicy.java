@@ -2,7 +2,7 @@ package christmas.service;
 
 import christmas.domain.MenuItem;
 import christmas.domain.Order;
-import christmas.dto.FreeGift;
+import christmas.domain.FreeGift;
 
 public class ChampagneGiveawayPolicy implements GiveawayPolicy {
     private static final MenuItem GIVEAWAY_MENU_ITEM = MenuItem.CHAMPAGNE;

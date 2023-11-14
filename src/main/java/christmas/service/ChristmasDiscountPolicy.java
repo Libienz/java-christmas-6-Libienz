@@ -1,7 +1,7 @@
 package christmas.service;
 
 import christmas.domain.Order;
-import christmas.dto.DiscountDetails;
+import christmas.domain.DiscountDetails;
 
 public class ChristmasDiscountPolicy implements DiscountPolicy {
     private static final Integer EVENT_START_DAY = 1;

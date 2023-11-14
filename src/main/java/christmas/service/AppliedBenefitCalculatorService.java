@@ -4,9 +4,9 @@ import christmas.domain.DecemberEventBadge;
 import christmas.domain.Order;
 import christmas.dto.BenefitDetailDto;
 import christmas.dto.BenefitDetailsDto;
-import christmas.dto.DiscountDetail;
-import christmas.dto.DiscountDetails;
-import christmas.dto.FreeGifts;
+import christmas.domain.DiscountDetail;
+import christmas.domain.DiscountDetails;
+import christmas.domain.FreeGifts;
 import java.util.List;
 
 public class AppliedBenefitCalculatorService {

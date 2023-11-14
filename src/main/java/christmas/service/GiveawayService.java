@@ -1,8 +1,8 @@
 package christmas.service;
 
 import christmas.domain.Order;
-import christmas.dto.FreeGift;
-import christmas.dto.FreeGifts;
+import christmas.domain.FreeGift;
+import christmas.domain.FreeGifts;
 import java.util.List;
 
 public class GiveawayService {

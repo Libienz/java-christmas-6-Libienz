@@ -1,4 +1,4 @@
-package christmas.dto;
+package christmas.domain;
 
 import java.util.List;
 

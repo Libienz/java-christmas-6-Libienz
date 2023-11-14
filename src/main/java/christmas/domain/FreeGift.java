@@ -1,6 +1,4 @@
-package christmas.dto;
-
-import christmas.domain.MenuItem;
+package christmas.domain;
 
 public class FreeGift {
     private final MenuItem giveaway;
