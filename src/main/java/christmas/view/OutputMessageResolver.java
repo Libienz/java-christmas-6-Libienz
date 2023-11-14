@@ -30,7 +30,7 @@ public class OutputMessageResolver {
     public String resolveOrderItemsMessage(OrderItemsDto orderItemsDto) {
         List<OrderItemDto> orderItems = orderItemsDto.getOrderItemDtos();
         return ORDER_ITEMS_MESSAGE_PREFIX + orderItems.stream()
-                .map(orderItemDto -> orderItemDto.getMenuName() + " " + orderItemDto.getOrderCount() + "개")
+                .map(this::formatOrderItem)
                 .collect(Collectors.joining(LINE_SEPARATOR));
     }
 
@@ -44,7 +44,7 @@ public class OutputMessageResolver {
             return GIVEAWAY_MESSAGE_PREFIX + RESULT_EMPTY_MESSAGE;
         }
         return GIVEAWAY_MESSAGE_PREFIX + freeGiftDtos.stream()
-                .map(resultDto -> resultDto.getMenuName() + " " + resultDto.getCount() + "개")
+                .map(this::formatFreeGift)
                 .collect(Collectors.joining(LINE_SEPARATOR));
     }
 
@@ -54,7 +54,7 @@ public class OutputMessageResolver {
             return APPLIED_BENEFIT_MESSAGE_PREFIX + RESULT_EMPTY_MESSAGE;
         }
         return APPLIED_BENEFIT_MESSAGE_PREFIX + benefitDetailDtos.stream()
-                .map(detailDto -> String.format("%s: -%,d원", detailDto.getDescription(), detailDto.getBenefitAmount()))
+                .map(this::formatBenefitDetail)
                 .collect(Collectors.joining(LINE_SEPARATOR));
     }
 
@@ -77,4 +77,15 @@ public class OutputMessageResolver {
         return String.format("%,d원", amount);
     }
 
+    private String formatOrderItem(OrderItemDto orderItemDto) {
+        return String.format("%s %d개", orderItemDto.getMenuName(), orderItemDto.getOrderCount());
+    }
+
+    private String formatFreeGift(FreeGiftDto freeGiftDto) {
+        return String.format("%s %d개", freeGiftDto.getMenuName(), freeGiftDto.getCount());
+    }
+
+    private String formatBenefitDetail(BenefitDetailDto benefitDetailDto) {
+        return String.format("%s: -%,d원", benefitDetailDto.getDescription(), benefitDetailDto.getBenefitAmount());
+    }
 }
