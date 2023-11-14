@@ -8,7 +8,6 @@ import christmas.dto.FreeGiftsDto;
 import christmas.dto.OrderDateDto;
 import christmas.dto.OrderItemDto;
 import christmas.dto.OrderItemsDto;
-import java.util.List;
 import java.util.stream.Collectors;
 
 public class OutputMessageResolver {
@@ -28,8 +27,8 @@ public class OutputMessageResolver {
     }
 
     public String resolveOrderItemsMessage(OrderItemsDto orderItemsDto) {
-        List<OrderItemDto> orderItems = orderItemsDto.getOrderItemDtos();
-        return ORDER_ITEMS_MESSAGE_PREFIX + orderItems.stream()
+        return ORDER_ITEMS_MESSAGE_PREFIX + orderItemsDto.getOrderItemDtos()
+                .stream()
                 .map(this::formatOrderItem)
                 .collect(Collectors.joining(LINE_SEPARATOR));
     }
@@ -39,21 +38,21 @@ public class OutputMessageResolver {
     }
 
     public String resolveGiveawayMessage(FreeGiftsDto freeGiftsDto) {
-        List<FreeGiftDto> freeGiftDtos = freeGiftsDto.getFreeGiftDtos();
-        if (freeGiftDtos.isEmpty()) {
+        if (freeGiftsDto.getFreeGiftDtos().isEmpty()) {
             return GIVEAWAY_MESSAGE_PREFIX + RESULT_EMPTY_MESSAGE;
         }
-        return GIVEAWAY_MESSAGE_PREFIX + freeGiftDtos.stream()
+        return GIVEAWAY_MESSAGE_PREFIX + freeGiftsDto.getFreeGiftDtos()
+                .stream()
                 .map(this::formatFreeGift)
                 .collect(Collectors.joining(LINE_SEPARATOR));
     }
 
     public String resolveAppliedBenefitMessage(BenefitDetailsDto benefitDetailsDto) {
-        List<BenefitDetailDto> benefitDetailDtos = benefitDetailsDto.getBenefitDetailDtos();
-        if (benefitDetailDtos.isEmpty()) {
+        if (benefitDetailsDto.getBenefitDetailDtos().isEmpty()) {
             return APPLIED_BENEFIT_MESSAGE_PREFIX + RESULT_EMPTY_MESSAGE;
         }
-        return APPLIED_BENEFIT_MESSAGE_PREFIX + benefitDetailDtos.stream()
+        return APPLIED_BENEFIT_MESSAGE_PREFIX + benefitDetailsDto.getBenefitDetailDtos()
+                .stream()
                 .map(this::formatBenefitDetail)
                 .collect(Collectors.joining(LINE_SEPARATOR));
     }
