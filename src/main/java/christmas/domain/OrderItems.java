@@ -46,6 +46,12 @@ public class OrderItems {
         }
     }
 
+    private void validateBeverageOnly(List<OrderItem> orderItems) {
+        if (!orderItems.stream().allMatch(OrderItem::isBeverageOrder)) {
+            throw new IllegalArgumentException(INVALID_ORDER);
+        }
+    }
+
     private boolean hasDuplicateItem(List<OrderItem> orderItems) {
         return orderItems.size() != orderItems.stream()
                 .map(OrderItem::getMenuName)

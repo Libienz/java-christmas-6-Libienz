@@ -33,6 +33,10 @@ public class OrderItem {
         return orderCount;
     }
 
+    public boolean isBeverageOrder() {
+        return menuItem.getCategory() == MenuCategory.BEVERAGE;
+    }
+
     public int getPrice() {
         return menuItem.getPrice() * orderCount;
     }
