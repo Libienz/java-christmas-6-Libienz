@@ -36,6 +36,7 @@ public class OrderItems {
 
     private void validate(List<OrderItem> orderItems) {
         validateDuplicateOrderItem(orderItems);
+        validateBeverageOnly(orderItems);
     }
 
     private void validateDuplicateOrderItem(List<OrderItem> orderItems) {
@@ -45,7 +46,7 @@ public class OrderItems {
     }
 
     private void validateBeverageOnly(List<OrderItem> orderItems) {
-        if (!orderItems.stream().allMatch(OrderItem::isBeverageOrder)) {
+        if (orderItems.stream().allMatch(OrderItem::isBeverageOrder)) {
             throw new IllegalArgumentException(INVALID_ORDER);
         }
     }

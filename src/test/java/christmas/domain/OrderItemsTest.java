@@ -36,7 +36,7 @@ class OrderItemsTest {
     @Test
     void testBeverageOnlyOrderValidate() {
         OrderItem orderItem1 = OrderItem.of(MenuItem.CHAMPAGNE, 3);
-        OrderItem orderItem2 = OrderItem.of(MenuItem.CHAMPAGNE, 3);
+        OrderItem orderItem2 = OrderItem.of(MenuItem.ZERO_COLA, 3);
         List<OrderItem> orderItems = List.of(orderItem1, orderItem2);
 
         assertThatThrownBy(() -> OrderItems.from(orderItems))
