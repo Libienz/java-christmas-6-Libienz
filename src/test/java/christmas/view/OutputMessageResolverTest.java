@@ -21,6 +21,7 @@ import org.junit.jupiter.api.Test;
 @DisplayName("출력 메시지 리졸버 테스트")
 class OutputMessageResolverTest {
     private OutputMessageResolver outputMessageResolver;
+    private static final String LINE_SEPARATOR = System.lineSeparator();
 
     @BeforeEach
     void setUp() {
@@ -45,14 +46,19 @@ class OutputMessageResolverTest {
         OrderItemsDto orderItemsDto = OrderItems.from(orderItems).toOrderItemsDto();
 
         String message = outputMessageResolver.resolveOrderItemsMessage(orderItemsDto);
-        assertThat(message.trim()).isEqualTo("<주문 메뉴>\n티본스테이크 3개\n해산물파스타 3개\n초코케이크 3개\n".trim());
+        assertThat(message.trim()).isEqualTo(
+                ("<주문 메뉴>" + LINE_SEPARATOR
+                        + "티본스테이크 3개" + LINE_SEPARATOR
+                        + "해산물파스타 3개" + LINE_SEPARATOR
+                        + "초코케이크 3개").trim());
+
     }
 
     @DisplayName("할인 전 총주문 금액 메시지를 규칙에 맞게 생성한다")
     @Test
     void testOriginalPriceMessageResolve() {
         String message = outputMessageResolver.resolveOriginalPriceMessage(3000);
-        assertThat(message.trim()).isEqualTo("<할인 전 총주문 금액>\n3,000원".trim());
+        assertThat(message.trim()).isEqualTo(("<할인 전 총주문 금액>" + LINE_SEPARATOR + "3,000원").trim());
     }
 
     @DisplayName("증정 메뉴 메시지를 규칙에 맞게 생성한다")
@@ -61,8 +67,8 @@ class OutputMessageResolverTest {
         FreeGift freeGift = FreeGift.of(MenuItem.CHAMPAGNE, 1, "증정 이벤트");
         FreeGifts freeGifts = FreeGifts.from(List.of(freeGift));
 
-        String message = outputMessageResolver.resolveGiveawayMessage(freeGifts);
-        assertThat(message.trim()).isEqualTo("<증정 메뉴>\n샴페인 1개".trim());
+        String message = outputMessageResolver.resolveGiveawayMessage(freeGifts.toFreeGiftsDto());
+        assertThat(message.trim()).isEqualTo(("<증정 메뉴>" + LINE_SEPARATOR + "샴페인 1개").trim());
     }
 
     @DisplayName("혜택 내역 메시지를 규칙에 맞게 생성한다")
@@ -77,29 +83,33 @@ class OutputMessageResolverTest {
         FreeGifts freeGifts = FreeGifts.from(List.of(freeGift));
 
         String message = outputMessageResolver.resolveAppliedBenefitMessage(
-                BenefitDetailsDto.of(discountDetails, freeGifts));
+                BenefitDetailsDto.of(discountDetails.toBenefitDetailDtos(), freeGifts.toBenefitDetailDtos()));
         assertThat(message.trim()).isEqualTo(
-                "<혜택 내역>\n크리스마스 디데이 할인: -1,200원\n평일 할인: -4,046원\n특별 할인: -1,000원\n증정 이벤트: -25,000원".trim());
+                ("<혜택 내역>" + LINE_SEPARATOR
+                        + "크리스마스 디데이 할인: -1,200원" + LINE_SEPARATOR
+                        + "평일 할인: -4,046원" + LINE_SEPARATOR
+                        + "특별 할인: -1,000원" + LINE_SEPARATOR
+                        + "증정 이벤트: -25,000원").trim());
     }
 
     @DisplayName("총혜택 금액 메시지를 규칙에 맞게 생성한다")
     @Test
     void testBenefitAmountMessageResolve() {
         String message = outputMessageResolver.resolveBenefitAmountMessage(31246);
-        assertThat(message.trim()).isEqualTo("<총혜택 금액>\n-31,246원");
+        assertThat(message.trim()).isEqualTo("<총혜택 금액>" + LINE_SEPARATOR + "-31,246원");
     }
 
     @DisplayName("할인 후 예상 결제 금액 메시지를 규칙에 맞게 생성한다")
     @Test
     void testDiscountedPriceMessageResolve() {
         String message = outputMessageResolver.resolveDiscountedPriceMessage(135754);
-        assertThat(message.trim()).isEqualTo("<할인 후 예상 결제 금액>\n135,754원".trim());
+        assertThat(message.trim()).isEqualTo(("<할인 후 예상 결제 금액>" + LINE_SEPARATOR + "135,754원").trim());
     }
 
     @DisplayName("12월 이벤트 배지 메시지를 규칙에 맞게 생성한다")
     @Test
     void testEventBadgeMessageResolve() {
         String message = outputMessageResolver.resolveEventBadgeMessage(DecemberEventBadge.SANTA);
-        assertThat(message.trim()).isEqualTo("<12월 이벤트 배지>\n산타".trim());
+        assertThat(message.trim()).isEqualTo(("<12월 이벤트 배지>" + LINE_SEPARATOR + "산타").trim());
     }
 }

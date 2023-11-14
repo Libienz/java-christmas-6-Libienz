@@ -2,13 +2,14 @@ package christmas.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import christmas.domain.FreeGifts;
 import christmas.domain.MenuItem;
 import christmas.domain.Order;
 import christmas.domain.OrderDate;
 import christmas.domain.OrderItem;
 import christmas.domain.OrderItems;
-import christmas.domain.FreeGift;
-import christmas.domain.FreeGifts;
+import christmas.dto.FreeGiftDto;
+import christmas.dto.FreeGiftsDto;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -34,9 +35,9 @@ class GiveawayServiceTest {
 
         Order order = Order.of(OrderItems.from(orderItems), OrderDate.from(4));
         FreeGifts giveawayResultsDto = giveawayService.applyGiveaway(order);
-        List<FreeGift> freeGifts = giveawayResultsDto.getGiveawayResultDtos();
+        FreeGiftsDto freeGifts = giveawayResultsDto.toFreeGiftsDto();
 
-        assertThat(freeGifts.size()).isEqualTo(1);
+        assertThat(freeGifts.getFreeGiftDtos().size()).isEqualTo(1);
     }
 
     @DisplayName("샴페인 증정 정책만을 만족할 경우 샴페인이 증정된다")
@@ -49,9 +50,9 @@ class GiveawayServiceTest {
 
         Order order = Order.of(OrderItems.from(orderItems), OrderDate.from(4));
         FreeGifts giveawayResultsDto = giveawayService.applyGiveaway(order);
-        List<FreeGift> freeGifts = giveawayResultsDto.getGiveawayResultDtos();
+        List<FreeGiftDto> freeGifts = giveawayResultsDto.toFreeGiftsDto().getFreeGiftDtos();
 
-        assertThat(freeGifts.get(0).getGiveaway()).isEqualTo(MenuItem.CHAMPAGNE);
+        assertThat(freeGifts.get(0).getMenuName()).isEqualTo(MenuItem.CHAMPAGNE.getItemName());
     }
 
     @DisplayName("샴페인 증정 정책만을 만족할 경우 증정 개수는 1개이다")
@@ -64,7 +65,7 @@ class GiveawayServiceTest {
 
         Order order = Order.of(OrderItems.from(orderItems), OrderDate.from(4));
         FreeGifts giveawayResultsDto = giveawayService.applyGiveaway(order);
-        List<FreeGift> freeGifts = giveawayResultsDto.getGiveawayResultDtos();
+        List<FreeGiftDto> freeGifts = giveawayResultsDto.toFreeGiftsDto().getFreeGiftDtos();
 
         assertThat(freeGifts.get(0).getCount()).isEqualTo(1);
     }
