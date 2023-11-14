@@ -34,7 +34,7 @@ class DiscountServiceTest {
         List<OrderItem> orderItems = List.of(item1, item2, item3);
 
         Order order = Order.of(OrderItems.from(orderItems), OrderDate.from(27));
-        DiscountDetails discountDetail = discountService.applyDiscount(order);
+        DiscountDetails discountDetail = discountService.calculateApplicableDiscounts(order);
         List<BenefitDetailDto> benefitDetailDtos = discountDetail.toBenefitDetailDtos();
 
         assertThat(benefitDetailDtos.size()).isEqualTo(0);
@@ -49,7 +49,7 @@ class DiscountServiceTest {
         List<OrderItem> orderItems = List.of(item1, item2, item3);
 
         Order order = Order.of(OrderItems.from(orderItems), OrderDate.from(4));
-        DiscountDetails discountDetail = discountService.applyDiscount(order);
+        DiscountDetails discountDetail = discountService.calculateApplicableDiscounts(order);
         List<BenefitDetailDto> benefitDetailDtos = discountDetail.toBenefitDetailDtos();
 
         assertThat(benefitDetailDtos.size()).isEqualTo(2);
@@ -64,7 +64,7 @@ class DiscountServiceTest {
         List<OrderItem> orderItems = List.of(item1, item2, item3);
 
         Order order = Order.of(OrderItems.from(orderItems), OrderDate.from(4));
-        DiscountDetails discountDetail = discountService.applyDiscount(order);
+        DiscountDetails discountDetail = discountService.calculateApplicableDiscounts(order);
         List<BenefitDetailDto> discountDetails = discountDetail.toBenefitDetailDtos();
 
         assertThat(discountDetails)
@@ -81,7 +81,7 @@ class DiscountServiceTest {
         List<OrderItem> orderItems = List.of(item1, item2, item3);
 
         Order order = Order.of(OrderItems.from(orderItems), OrderDate.from(4));
-        DiscountDetails discountDetail = discountService.applyDiscount(order);
+        DiscountDetails discountDetail = discountService.calculateApplicableDiscounts(order);
         List<BenefitDetailDto> discountDetails = discountDetail.toBenefitDetailDtos();
 
         assertThat(discountDetails)

@@ -34,7 +34,7 @@ class FreeGiftServiceTest {
         List<OrderItem> orderItems = List.of(item1, item2, item3);
 
         Order order = Order.of(OrderItems.from(orderItems), OrderDate.from(4));
-        FreeGifts giveawayResultsDto = freeGiftService.applyGiveaway(order);
+        FreeGifts giveawayResultsDto = freeGiftService.calculateApplicableFreeGifts(order);
         FreeGiftsDto freeGifts = giveawayResultsDto.toFreeGiftsDto();
 
         assertThat(freeGifts.getFreeGiftDtos().size()).isEqualTo(1);
@@ -49,7 +49,7 @@ class FreeGiftServiceTest {
         List<OrderItem> orderItems = List.of(item1, item2, item3);
 
         Order order = Order.of(OrderItems.from(orderItems), OrderDate.from(4));
-        FreeGifts giveawayResultsDto = freeGiftService.applyGiveaway(order);
+        FreeGifts giveawayResultsDto = freeGiftService.calculateApplicableFreeGifts(order);
         List<FreeGiftDto> freeGifts = giveawayResultsDto.toFreeGiftsDto().getFreeGiftDtos();
 
         assertThat(freeGifts.get(0).getMenuName()).isEqualTo(MenuItem.CHAMPAGNE.getItemName());
@@ -64,7 +64,7 @@ class FreeGiftServiceTest {
         List<OrderItem> orderItems = List.of(item1, item2, item3);
 
         Order order = Order.of(OrderItems.from(orderItems), OrderDate.from(4));
-        FreeGifts giveawayResultsDto = freeGiftService.applyGiveaway(order);
+        FreeGifts giveawayResultsDto = freeGiftService.calculateApplicableFreeGifts(order);
         List<FreeGiftDto> freeGifts = giveawayResultsDto.toFreeGiftsDto().getFreeGiftDtos();
 
         assertThat(freeGifts.get(0).getCount()).isEqualTo(1);

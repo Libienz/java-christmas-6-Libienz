@@ -12,7 +12,7 @@ public class DiscountService {
         this.discountPolicies = discountPolicies;
     }
 
-    public DiscountDetails applyDiscount(Order order) {
+    public DiscountDetails calculateApplicableDiscounts(Order order) {
         List<DiscountDetail> discountDetails = discountPolicies.stream()
                 .filter(discountPolicy -> discountPolicy.supports(order))
                 .map(discountPolicy -> discountPolicy.calculateApplicableDiscount(order))

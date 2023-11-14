@@ -17,8 +17,8 @@ public class BenefitCalculationService {
     }
 
     public Benefit calculateBenefit(Order order) {
-        DiscountDetails discountDetails = discountService.applyDiscount(order);
-        FreeGifts freeGifts = freeGiftService.applyGiveaway(order);
+        DiscountDetails discountDetails = discountService.calculateApplicableDiscounts(order);
+        FreeGifts freeGifts = freeGiftService.calculateApplicableFreeGifts(order);
         return Benefit.of(discountDetails, freeGifts);
     }
 }
