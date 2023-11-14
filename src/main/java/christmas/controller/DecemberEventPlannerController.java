@@ -1,11 +1,9 @@
 package christmas.controller;
 
-import christmas.domain.DecemberEventBadge;
-import christmas.domain.FreeGifts;
+import christmas.domain.Benefit;
 import christmas.domain.Order;
 import christmas.domain.OrderDate;
 import christmas.domain.OrderItems;
-import christmas.dto.BenefitDetailsDto;
 import christmas.service.BenefitCalculationService;
 import christmas.view.InputView;
 import christmas.view.OutputView;
@@ -33,19 +31,14 @@ public class DecemberEventPlannerController {
         outputView.printOriginalPrice(orderItems.calculateTotalPrice());
 
         Order order = Order.of(orderItems, orderDate);
+        Benefit benefit = benefitCalculationService.calculateBenefit(order);
 
-        FreeGifts freeGifts = benefitCalculationService.calculateGiveaway(order);
-        outputView.printGiveaway(freeGifts);
+        outputView.printGiveaway(benefit.toFreeGiftsDto());
+        outputView.printAppliedBenefitInformation(benefit.toBenefitDetailsDto());
+        Integer benefitAmount = benefit.calculateTotalBenefitAmount();
+        outputView.printBenefitAmount(benefitAmount);
+        outputView.printDiscountedPrice(benefit.calculateBenefitAppliedPrice(order.calculatePrice()));
 
-        BenefitDetailsDto benefitDetailsDto = benefitCalculationService.calculateBenefitDetails(order);
-        outputView.printAppliedBenefitInformation(benefitDetailsDto);
-
-        Integer totalBenefitAmount = benefitCalculationService.calculateTotalBenefitAmount(benefitDetailsDto);
-        outputView.printBenefitAmount(totalBenefitAmount);
-
-        Integer benefitAppliedPrice = benefitCalculationService.calculateBenefitAppliedPrice(order);
-        outputView.printDiscountedPrice(benefitAppliedPrice);
-
-        outputView.printEventBadge(DecemberEventBadge.from(totalBenefitAmount));
+        outputView.printEventBadge(benefit.calculateAchievableBadge(benefitAmount));
     }
 }

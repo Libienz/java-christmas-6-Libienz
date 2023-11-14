@@ -16,11 +16,11 @@ public class Benefit {
         return new Benefit(discountDetails, freeGifts);
     }
 
-    public BenefitDetailsDto toBenefitDetailsDto(Order order) {
+    public BenefitDetailsDto toBenefitDetailsDto() {
         return BenefitDetailsDto.of(discountDetails, freeGifts);
     }
 
-    public Integer calculateTotalBenefitAmount(BenefitDetailsDto benefitDetailsDto) {
+    public Integer calculateTotalBenefitAmount() {
         return discountDetails.calculateDiscountedPrice() + freeGifts.calculateFreeGiftsPrice();
     }
 
