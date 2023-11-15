@@ -36,7 +36,7 @@ public class DecemberEventPlannerController {
         outputView.printFreeGifts(benefit.toFreeGiftsDto());
         outputView.printBenefitDetails(benefit.toBenefitDetailsDto());
         outputView.printBenefitAmount(benefit.calculateTotalBenefitAmount());
-        outputView.printDiscountedPrice(order.calculateDiscountedPrice(benefit.calculateDiscountedPrice()));
+        outputView.printDiscountedPrice(order.calculateDiscountedPrice(benefit.calculateDiscountedAmount()));
         outputView.printEventBadge(benefit.calculateAchievableBadge().toEventBadgeDto());
     }
 }

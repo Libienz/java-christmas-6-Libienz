@@ -15,7 +15,7 @@ public class FreeGiftService {
     public FreeGifts calculateApplicableFreeGifts(Order order) {
         List<FreeGift> freeGifts = freeGiftPolicies.stream()
                 .filter(freeGiftPolicy -> freeGiftPolicy.supports(order))
-                .map(freeGiftPolicy -> freeGiftPolicy.calculateApplicableFreeGift(order))
+                .map(freeGiftPolicy -> freeGiftPolicy.applyFreeGift(order))
                 .toList();
         return FreeGifts.from(freeGifts);
     }

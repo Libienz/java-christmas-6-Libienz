@@ -23,7 +23,7 @@ public class ChampagneFreeGiftPolicy implements FreeGiftPolicy {
     }
 
     @Override
-    public FreeGift calculateApplicableFreeGift(Order order) {
+    public FreeGift applyFreeGift(Order order) {
         return FreeGift.of(GIVEAWAY_MENU_ITEM, GIVEAWAY_COUNT, DESCRIPTION);
     }
 

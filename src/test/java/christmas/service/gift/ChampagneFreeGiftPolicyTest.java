@@ -63,7 +63,7 @@ class ChampagneFreeGiftPolicyTest {
         List<OrderItem> orderItems = List.of(item1, item2, item3);
 
         Order order = Order.of(OrderItems.from(orderItems), OrderDate.from(5));
-        FreeGift freeGift = champagneGiveawayPolicy.calculateApplicableFreeGift(order);
+        FreeGift freeGift = champagneGiveawayPolicy.applyFreeGift(order);
 
         assertThat(freeGift.toFreeGiftDto().getMenuName()).isEqualTo("샴페인");
     }
@@ -77,7 +77,7 @@ class ChampagneFreeGiftPolicyTest {
         List<OrderItem> orderItems = List.of(item1, item2, item3);
 
         Order order = Order.of(OrderItems.from(orderItems), OrderDate.from(5));
-        FreeGift freeGift = champagneGiveawayPolicy.calculateApplicableFreeGift(order);
+        FreeGift freeGift = champagneGiveawayPolicy.applyFreeGift(order);
 
         assertThat(freeGift.toFreeGiftDto().getCount()).isEqualTo(1);
     }

@@ -33,7 +33,7 @@ class ChristmasDiscountPolicyTest {
         List<OrderItem> orderItems = List.of(item1, item2, item3);
 
         Order order = Order.of(OrderItems.from(orderItems), OrderDate.from(3));
-        DiscountDetail discountDetail = christmasDiscountPolicy.calculateApplicableDiscount(order);
+        DiscountDetail discountDetail = christmasDiscountPolicy.applyDiscount(order);
 
         assertThat(discountDetail.getDiscountAmount()).isEqualTo(1200);
     }

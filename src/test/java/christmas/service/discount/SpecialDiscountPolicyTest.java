@@ -33,7 +33,7 @@ class SpecialDiscountPolicyTest {
         List<OrderItem> orderItems = List.of(item1, item2, item3);
 
         Order order = Order.of(OrderItems.from(orderItems), OrderDate.from(3));
-        DiscountDetail discountDetail = specialDiscountPolicy.calculateApplicableDiscount(order);
+        DiscountDetail discountDetail = specialDiscountPolicy.applyDiscount(order);
 
         assertThat(discountDetail.getDiscountAmount()).isEqualTo(1000);
     }

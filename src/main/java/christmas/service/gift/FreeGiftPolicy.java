@@ -6,5 +6,5 @@ import christmas.domain.order.Order;
 public interface FreeGiftPolicy {
     Boolean supports(Order order);
 
-    FreeGift calculateApplicableFreeGift(Order order);
+    FreeGift applyFreeGift(Order order);
 }

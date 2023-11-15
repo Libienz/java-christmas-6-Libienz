@@ -25,7 +25,7 @@ public class WeekendDiscountPolicy implements DiscountPolicy {
     }
 
     @Override
-    public DiscountDetail calculateApplicableDiscount(Order order) {
+    public DiscountDetail applyDiscount(Order order) {
         return DiscountDetail.of(DISCOUNT_DESCRIPTION, calculateDiscountAmount(order));
     }
 

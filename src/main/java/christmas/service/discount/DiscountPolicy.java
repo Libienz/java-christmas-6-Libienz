@@ -6,5 +6,5 @@ import christmas.domain.order.Order;
 public interface DiscountPolicy {
     Boolean supports(Order order);
 
-    DiscountDetail calculateApplicableDiscount(Order order);
+    DiscountDetail applyDiscount(Order order);
 }

@@ -15,7 +15,7 @@ public class DiscountService {
     public DiscountDetails calculateApplicableDiscounts(Order order) {
         List<DiscountDetail> discountDetails = discountPolicies.stream()
                 .filter(discountPolicy -> discountPolicy.supports(order))
-                .map(discountPolicy -> discountPolicy.calculateApplicableDiscount(order))
+                .map(discountPolicy -> discountPolicy.applyDiscount(order))
                 .toList();
 
         return DiscountDetails.from(discountDetails);
