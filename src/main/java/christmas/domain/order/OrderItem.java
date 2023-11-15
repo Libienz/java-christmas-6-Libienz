@@ -7,7 +7,6 @@ import christmas.exception.orders.OrderCountRangeException;
 
 public class OrderItem {
     private static final Integer MIN_ORDER_COUNT = 1;
-    private static final Integer MAX_ORDER_COUNT = 20;
 
     private final MenuItem menuItem;
     private final Integer orderCount;
@@ -50,7 +49,7 @@ public class OrderItem {
     }
 
     private void validateOrderCount(Integer orderCount) {
-        if (orderCount < MIN_ORDER_COUNT || orderCount > MAX_ORDER_COUNT) {
+        if (orderCount < MIN_ORDER_COUNT) {
             throw new OrderCountRangeException();
         }
     }

@@ -4,9 +4,12 @@ import christmas.domain.menu.MenuCategory;
 import christmas.dto.order.OrderItemsDto;
 import christmas.exception.orders.BeverageOnlyOrderException;
 import christmas.exception.orders.DuplicateOrderItemException;
+import christmas.exception.orders.OrderCountRangeException;
 import java.util.List;
 
 public class OrderItems {
+    private static final Integer MAX_ORDER_COUNT = 20;
+
     private final List<OrderItem> orderItems;
 
     private OrderItems(List<OrderItem> orderItems) {
@@ -39,11 +42,18 @@ public class OrderItems {
     private void validate(List<OrderItem> orderItems) {
         validateDuplicateOrderItem(orderItems);
         validateBeverageOnly(orderItems);
+        validateOrderCount(orderItems);
     }
 
     private void validateDuplicateOrderItem(List<OrderItem> orderItems) {
         if (hasDuplicateItem(orderItems)) {
             throw new DuplicateOrderItemException();
+        }
+    }
+
+    private void validateOrderCount(List<OrderItem> orderItems) {
+        if (isOrderCountExceedMaxCount(orderItems)) {
+            throw new OrderCountRangeException();
         }
     }
 
@@ -58,5 +68,11 @@ public class OrderItems {
                 .map(OrderItem::getMenuName)
                 .distinct()
                 .count();
+    }
+
+    private boolean isOrderCountExceedMaxCount(List<OrderItem> orderItems) {
+        return orderItems.stream()
+                .mapToInt(orderItem -> orderItem.toOrderItemDto().getOrderCount())
+                .sum() > MAX_ORDER_COUNT;
     }
 }
