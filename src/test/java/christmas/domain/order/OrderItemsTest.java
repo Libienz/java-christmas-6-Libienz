@@ -38,6 +38,18 @@ class OrderItemsTest {
                 .hasMessage("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
     }
 
+    @DisplayName("주문 개수가 20개가 넘어가면 생성 시 검증에 실패한다")
+    @Test
+    void testMaxOrderCountExceed() {
+        OrderItem orderItem1 = OrderItem.of(MenuItem.CHAMPAGNE, 20);
+        OrderItem orderItem2 = OrderItem.of(MenuItem.ZERO_COLA, 1);
+        List<OrderItem> orderItems = List.of(orderItem1, orderItem2);
+
+        assertThatThrownBy(() -> OrderItems.from(orderItems))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+    }
+
     @DisplayName("올바른 생성 요청은 생성 시 검증을 통과한다")
     @Test
     void testNonDuplicateOrderItems() {
