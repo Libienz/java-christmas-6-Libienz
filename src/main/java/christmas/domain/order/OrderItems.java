@@ -29,7 +29,7 @@ public class OrderItems {
 
     public Integer calculateTotalPrice() {
         return orderItems.stream()
-                .mapToInt(OrderItem::getPrice)
+                .mapToInt(OrderItem::calculatePrice)
                 .sum();
     }
 

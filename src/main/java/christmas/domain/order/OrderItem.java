@@ -40,7 +40,7 @@ public class OrderItem {
         return menuItem.getCategory() == MenuCategory.BEVERAGE;
     }
 
-    public int getPrice() {
+    public int calculatePrice() {
         return menuItem.getPrice() * orderCount;
     }
 

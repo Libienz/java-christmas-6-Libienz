@@ -4,12 +4,12 @@ import christmas.domain.menu.MenuItem;
 import christmas.dto.benefit.FreeGiftDto;
 
 public class FreeGift {
-    private final MenuItem giveaway;
+    private final MenuItem freeGift;
     private final Integer count;
     private final String description;
 
-    public FreeGift(MenuItem giveaway, Integer count, String description) {
-        this.giveaway = giveaway;
+    public FreeGift(MenuItem freeGift, Integer count, String description) {
+        this.freeGift = freeGift;
         this.count = count;
         this.description = description;
     }
@@ -23,10 +23,10 @@ public class FreeGift {
     }
 
     public Integer calculateFreeGiftPrice() {
-        return count * giveaway.getPrice();
+        return count * freeGift.getPrice();
     }
 
     public FreeGiftDto toFreeGiftDto() {
-        return FreeGiftDto.of(giveaway.getItemName(), count);
+        return FreeGiftDto.of(freeGift.getItemName(), count);
     }
 }
