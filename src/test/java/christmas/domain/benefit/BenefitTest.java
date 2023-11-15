@@ -53,6 +53,6 @@ class BenefitTest {
     @DisplayName("받을 수 있는 배지를 알 수 있다")
     @Test
     void testAchievableBadge() {
-        assertThat(testBenefit.calculateAchievableBadge(20000)).isEqualTo(DecemberEventBadge.SANTA);
+        assertThat(testBenefit.calculateAchievableBadge()).isEqualTo(DecemberEventBadge.SANTA);
     }
 }

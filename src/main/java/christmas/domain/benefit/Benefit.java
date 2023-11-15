@@ -36,8 +36,8 @@ public class Benefit {
         return freeGifts.toFreeGiftsDto();
     }
 
-    public DecemberEventBadge calculateAchievableBadge(int benefitAmount) {
-        return DecemberEventBadge.from(benefitAmount);
+    public DecemberEventBadge calculateAchievableBadge() {
+        return DecemberEventBadge.from(calculateTotalBenefitAmount());
     }
 
     private List<BenefitDetailDto> combineToBenefitDetailDtos() {
